@@ -202,12 +202,12 @@ module SceneReader =
           )
     }
 
-  let bnextPage () =
+  let bnextPage =
     breader {
       let pageSize = 1<<<16
       let! pos  = bgetPos ()
-      let mpos  = (pos + 1) % 65536
-      let pos   = pos + pageSize - mpos
+      let pos   = pos + pageSize
+      let pos   = pos &&& ~~~(pageSize - 1)
       do! bsetPos pos
     }
 
@@ -230,7 +230,7 @@ module SceneReader =
           PaletteDelta  = paletteDelta
           Polygons      = ps
         }
-      do! if nf then bnextPage () else bvalue ()
+      do! if nf then bnextPage else bvalue ()
 
       return
         {

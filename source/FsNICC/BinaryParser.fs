@@ -75,8 +75,8 @@ module BinaryReader =
         ()
       | ValueSome nv  ->
         vs.Add nv
-      //cc <- nv.Continue
-      cc <- false
+      cc <- nv.Continue
+      //cc <- false
       ii  <- ni
     vs.ToArray (), ii
 
