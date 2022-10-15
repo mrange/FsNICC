@@ -1,0 +1,1506 @@
+
+Frame ReadResult: Next
+  Frame
+    ClearScreen : true
+    PaletteDelta: 8
+      ColorIndex: 8
+      RGB       : a40
+      ColorIndex: 7
+      RGB       : ff0
+      ColorIndex: 6
+      RGB       : c60
+      ColorIndex: 5
+      RGB       : 820
+      ColorIndex: 4
+      RGB       : fa0
+      ColorIndex: 3
+      RGB       : e80
+      ColorIndex: 2
+      RGB       : 600
+      ColorIndex: 1
+      RGB       : fff
+    Polygons    : 164
+      ColorIndex: 2
+      Vertices  : 3
+        X: 227
+        Y: 82
+        X: 240
+        Y: 88
+        X: 238
+        Y: 83
+      ColorIndex: 2
+      Vertices  : 3
+        X: 236
+        Y: 88
+        X: 240
+        Y: 88
+        X: 227
+        Y: 82
+      ColorIndex: 3
+      Vertices  : 4
+        X: 238
+        Y: 90
+        X: 240
+        Y: 88
+        X: 236
+        Y: 88
+        X: 234
+        Y: 90
+      ColorIndex: 2
+      Vertices  : 3
+        X: 239
+        Y: 96
+        X: 246
+        Y: 101
+        X: 244
+        Y: 96
+      ColorIndex: 2
+      Vertices  : 3
+        X: 241
+        Y: 101
+        X: 246
+        Y: 101
+        X: 239
+        Y: 96
+      ColorIndex: 3
+      Vertices  : 4
+        X: 244
+        Y: 103
+        X: 246
+        Y: 101
+        X: 241
+        Y: 101
+        X: 239
+        Y: 103
+      ColorIndex: 2
+      Vertices  : 3
+        X: 246
+        Y: 111
+        X: 254
+        Y: 117
+        X: 251
+        Y: 111
+      ColorIndex: 2
+      Vertices  : 3
+        X: 211
+        Y: 93
+        X: 207
+        Y: 81
+        X: 201
+        Y: 80
+      ColorIndex: 4
+      Vertices  : 4
+        X: 187
+        Y: 90
+        X: 191
+        Y: 87
+        X: 185
+        Y: 87
+        X: 181
+        Y: 90
+      ColorIndex: 7
+      Vertices  : 4
+        X: 244
+        Y: 121
+        X: 251
+        Y: 119
+        X: 238
+        Y: 119
+        X: 231
+        Y: 121
+      ColorIndex: 4
+      Vertices  : 4
+        X: 231
+        Y: 121
+        X: 238
+        Y: 119
+        X: 223
+        Y: 83
+        X: 218
+        Y: 86
+      ColorIndex: 2
+      Vertices  : 3
+        X: 211
+        Y: 93
+        X: 220
+        Y: 102
+        X: 207
+        Y: 81
+      ColorIndex: 4
+      Vertices  : 4
+        X: 214
+        Y: 97
+        X: 220
+        Y: 102
+        X: 213
+        Y: 81
+        X: 209
+        Y: 82
+      ColorIndex: 2
+      Vertices  : 3
+        X: 177
+        Y: 78
+        X: 192
+        Y: 85
+        X: 191
+        Y: 79
+      ColorIndex: 2
+      Vertices  : 3
+        X: 186
+        Y: 84
+        X: 192
+        Y: 85
+        X: 177
+        Y: 78
+      ColorIndex: 4
+      Vertices  : 4
+        X: 191
+        Y: 87
+        X: 192
+        Y: 85
+        X: 186
+        Y: 84
+        X: 185
+        Y: 87
+      ColorIndex: 2
+      Vertices  : 3
+        X: 236
+        Y: 88
+        X: 227
+        Y: 82
+        X: 242
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 239
+        Y: 96
+        X: 236
+        Y: 88
+        X: 242
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 241
+        Y: 101
+        X: 239
+        Y: 96
+        X: 242
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 246
+        Y: 111
+        X: 241
+        Y: 101
+        X: 242
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 246
+        Y: 111
+        X: 242
+        Y: 117
+        X: 254
+        Y: 117
+      ColorIndex: 4
+      Vertices  : 4
+        X: 251
+        Y: 119
+        X: 254
+        Y: 117
+        X: 242
+        Y: 117
+        X: 238
+        Y: 119
+      ColorIndex: 3
+      Vertices  : 4
+        X: 238
+        Y: 119
+        X: 242
+        Y: 117
+        X: 227
+        Y: 82
+        X: 223
+        Y: 83
+      ColorIndex: 4
+      Vertices  : 4
+        X: 215
+        Y: 121
+        X: 222
+        Y: 119
+        X: 211
+        Y: 101
+        X: 205
+        Y: 103
+      ColorIndex: 7
+      Vertices  : 4
+        X: 223
+        Y: 121
+        X: 229
+        Y: 119
+        X: 222
+        Y: 119
+        X: 215
+        Y: 121
+      ColorIndex: 4
+      Vertices  : 4
+        X: 190
+        Y: 104
+        X: 195
+        Y: 101
+        X: 189
+        Y: 101
+        X: 184
+        Y: 104
+      ColorIndex: 2
+      Vertices  : 3
+        X: 231
+        Y: 117
+        X: 213
+        Y: 81
+        X: 220
+        Y: 102
+      ColorIndex: 2
+      Vertices  : 3
+        X: 213
+        Y: 81
+        X: 231
+        Y: 117
+        X: 218
+        Y: 81
+      ColorIndex: 2
+      Vertices  : 3
+        X: 188
+        Y: 93
+        X: 196
+        Y: 99
+        X: 194
+        Y: 94
+      ColorIndex: 4
+      Vertices  : 4
+        X: 152
+        Y: 87
+        X: 155
+        Y: 84
+        X: 152
+        Y: 83
+        X: 150
+        Y: 87
+      ColorIndex: 2
+      Vertices  : 3
+        X: 225
+        Y: 117
+        X: 231
+        Y: 117
+        X: 220
+        Y: 102
+      ColorIndex: 2
+      Vertices  : 3
+        X: 211
+        Y: 93
+        X: 225
+        Y: 117
+        X: 220
+        Y: 102
+      ColorIndex: 3
+      Vertices  : 4
+        X: 222
+        Y: 119
+        X: 225
+        Y: 117
+        X: 211
+        Y: 93
+        X: 211
+        Y: 101
+      ColorIndex: 4
+      Vertices  : 4
+        X: 229
+        Y: 119
+        X: 231
+        Y: 117
+        X: 225
+        Y: 117
+        X: 222
+        Y: 119
+      ColorIndex: 4
+      Vertices  : 4
+        X: 203
+        Y: 121
+        X: 209
+        Y: 119
+        X: 197
+        Y: 81
+        X: 193
+        Y: 84
+      ColorIndex: 7
+      Vertices  : 4
+        X: 211
+        Y: 121
+        X: 217
+        Y: 119
+        X: 209
+        Y: 119
+        X: 203
+        Y: 121
+      ColorIndex: 2
+      Vertices  : 3
+        X: 190
+        Y: 99
+        X: 196
+        Y: 99
+        X: 188
+        Y: 93
+      ColorIndex: 4
+      Vertices  : 4
+        X: 195
+        Y: 101
+        X: 196
+        Y: 99
+        X: 190
+        Y: 99
+        X: 189
+        Y: 101
+      ColorIndex: 2
+      Vertices  : 3
+        X: 158
+        Y: 81
+        X: 165
+        Y: 82
+        X: 161
+        Y: 78
+      ColorIndex: 2
+      Vertices  : 3
+        X: 158
+        Y: 81
+        X: 161
+        Y: 78
+        X: 154
+        Y: 75
+      ColorIndex: 4
+      Vertices  : 4
+        X: 153
+        Y: 95
+        X: 157
+        Y: 91
+        X: 155
+        Y: 84
+        X: 152
+        Y: 87
+      ColorIndex: 4
+      Vertices  : 4
+        X: 163
+        Y: 95
+        X: 167
+        Y: 92
+        X: 157
+        Y: 91
+        X: 153
+        Y: 95
+      ColorIndex: 2
+      Vertices  : 3
+        X: 153
+        Y: 80
+        X: 158
+        Y: 81
+        X: 154
+        Y: 75
+      ColorIndex: 2
+      Vertices  : 3
+        X: 153
+        Y: 80
+        X: 154
+        Y: 75
+        X: 147
+        Y: 77
+      ColorIndex: 4
+      Vertices  : 4
+        X: 155
+        Y: 84
+        X: 158
+        Y: 81
+        X: 153
+        Y: 80
+        X: 152
+        Y: 83
+      ColorIndex: 2
+      Vertices  : 3
+        X: 211
+        Y: 93
+        X: 201
+        Y: 80
+        X: 213
+        Y: 117
+      ColorIndex: 3
+      Vertices  : 4
+        X: 209
+        Y: 119
+        X: 213
+        Y: 117
+        X: 201
+        Y: 80
+        X: 197
+        Y: 81
+      ColorIndex: 4
+      Vertices  : 4
+        X: 217
+        Y: 119
+        X: 219
+        Y: 117
+        X: 213
+        Y: 117
+        X: 209
+        Y: 119
+      ColorIndex: 2
+      Vertices  : 3
+        X: 211
+        Y: 93
+        X: 213
+        Y: 117
+        X: 219
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 158
+        Y: 81
+        X: 159
+        Y: 89
+        X: 165
+        Y: 82
+      ColorIndex: 1
+      Vertices  : 4
+        X: 157
+        Y: 91
+        X: 159
+        Y: 89
+        X: 158
+        Y: 81
+        X: 155
+        Y: 84
+      ColorIndex: 4
+      Vertices  : 4
+        X: 167
+        Y: 92
+        X: 168
+        Y: 89
+        X: 159
+        Y: 89
+        X: 157
+        Y: 91
+      ColorIndex: 2
+      Vertices  : 3
+        X: 165
+        Y: 82
+        X: 159
+        Y: 89
+        X: 168
+        Y: 89
+      ColorIndex: 2
+      Vertices  : 3
+        X: 153
+        Y: 80
+        X: 147
+        Y: 77
+        X: 144
+        Y: 80
+      ColorIndex: 3
+      Vertices  : 4
+        X: 142
+        Y: 82
+        X: 144
+        Y: 80
+        X: 147
+        Y: 77
+        X: 145
+        Y: 78
+      ColorIndex: 2
+      Vertices  : 3
+        X: 193
+        Y: 110
+        X: 202
+        Y: 117
+        X: 200
+        Y: 110
+      ColorIndex: 7
+      Vertices  : 4
+        X: 195
+        Y: 121
+        X: 201
+        Y: 119
+        X: 183
+        Y: 119
+        X: 178
+        Y: 121
+      ColorIndex: 4
+      Vertices  : 4
+        X: 178
+        Y: 121
+        X: 183
+        Y: 119
+        X: 174
+        Y: 79
+        X: 170
+        Y: 82
+      ColorIndex: 2
+      Vertices  : 3
+        X: 169
+        Y: 95
+        X: 158
+        Y: 95
+        X: 161
+        Y: 99
+      ColorIndex: 1
+      Vertices  : 4
+        X: 156
+        Y: 102
+        X: 159
+        Y: 99
+        X: 158
+        Y: 95
+        X: 155
+        Y: 95
+      ColorIndex: 4
+      Vertices  : 4
+        X: 159
+        Y: 102
+        X: 161
+        Y: 99
+        X: 159
+        Y: 99
+        X: 156
+        Y: 102
+      ColorIndex: 2
+      Vertices  : 3
+        X: 161
+        Y: 99
+        X: 158
+        Y: 95
+        X: 159
+        Y: 99
+      ColorIndex: 4
+      Vertices  : 4
+        X: 156
+        Y: 113
+        X: 160
+        Y: 111
+        X: 159
+        Y: 102
+        X: 155
+        Y: 104
+      ColorIndex: 2
+      Vertices  : 3
+        X: 186
+        Y: 84
+        X: 177
+        Y: 78
+        X: 186
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 188
+        Y: 93
+        X: 186
+        Y: 84
+        X: 186
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 190
+        Y: 99
+        X: 188
+        Y: 93
+        X: 186
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 193
+        Y: 110
+        X: 190
+        Y: 99
+        X: 186
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 193
+        Y: 110
+        X: 186
+        Y: 117
+        X: 202
+        Y: 117
+      ColorIndex: 4
+      Vertices  : 4
+        X: 201
+        Y: 119
+        X: 202
+        Y: 117
+        X: 186
+        Y: 117
+        X: 183
+        Y: 119
+      ColorIndex: 3
+      Vertices  : 4
+        X: 183
+        Y: 119
+        X: 186
+        Y: 117
+        X: 177
+        Y: 78
+        X: 174
+        Y: 79
+      ColorIndex: 4
+      Vertices  : 4
+        X: 118
+        Y: 94
+        X: 120
+        Y: 91
+        X: 122
+        Y: 75
+        X: 121
+        Y: 79
+      ColorIndex: 4
+      Vertices  : 4
+        X: 162
+        Y: 121
+        X: 165
+        Y: 119
+        X: 164
+        Y: 116
+        X: 160
+        Y: 118
+      ColorIndex: 7
+      Vertices  : 4
+        X: 168
+        Y: 121
+        X: 172
+        Y: 119
+        X: 165
+        Y: 119
+        X: 162
+        Y: 121
+      ColorIndex: 4
+      Vertices  : 4
+        X: 142
+        Y: 113
+        X: 145
+        Y: 110
+        X: 142
+        Y: 82
+        X: 139
+        Y: 86
+      ColorIndex: 2
+      Vertices  : 3
+        X: 173
+        Y: 117
+        X: 169
+        Y: 95
+        X: 161
+        Y: 99
+      ColorIndex: 1
+      Vertices  : 4
+        X: 160
+        Y: 111
+        X: 163
+        Y: 111
+        X: 161
+        Y: 99
+        X: 159
+        Y: 102
+      ColorIndex: 2
+      Vertices  : 3
+        X: 166
+        Y: 113
+        X: 161
+        Y: 99
+        X: 163
+        Y: 111
+      ColorIndex: 2
+      Vertices  : 3
+        X: 168
+        Y: 117
+        X: 173
+        Y: 117
+        X: 161
+        Y: 99
+      ColorIndex: 2
+      Vertices  : 3
+        X: 166
+        Y: 113
+        X: 168
+        Y: 117
+        X: 161
+        Y: 99
+      ColorIndex: 4
+      Vertices  : 4
+        X: 165
+        Y: 119
+        X: 168
+        Y: 117
+        X: 166
+        Y: 113
+        X: 164
+        Y: 116
+      ColorIndex: 4
+      Vertices  : 4
+        X: 172
+        Y: 119
+        X: 173
+        Y: 117
+        X: 168
+        Y: 117
+        X: 165
+        Y: 119
+      ColorIndex: 2
+      Vertices  : 3
+        X: 158
+        Y: 111
+        X: 153
+        Y: 80
+        X: 144
+        Y: 80
+      ColorIndex: 7
+      Vertices  : 4
+        X: 147
+        Y: 120
+        X: 151
+        Y: 118
+        X: 145
+        Y: 110
+        X: 142
+        Y: 113
+      ColorIndex: 4
+      Vertices  : 4
+        X: 156
+        Y: 122
+        X: 160
+        Y: 120
+        X: 151
+        Y: 118
+        X: 147
+        Y: 120
+      ColorIndex: 2
+      Vertices  : 3
+        X: 158
+        Y: 111
+        X: 144
+        Y: 80
+        X: 147
+        Y: 108
+      ColorIndex: 1
+      Vertices  : 4
+        X: 145
+        Y: 110
+        X: 147
+        Y: 108
+        X: 144
+        Y: 80
+        X: 142
+        Y: 82
+      ColorIndex: 2
+      Vertices  : 3
+        X: 162
+        Y: 118
+        X: 166
+        Y: 113
+        X: 163
+        Y: 111
+      ColorIndex: 2
+      Vertices  : 3
+        X: 162
+        Y: 118
+        X: 163
+        Y: 111
+        X: 158
+        Y: 111
+      ColorIndex: 3
+      Vertices  : 4
+        X: 164
+        Y: 116
+        X: 166
+        Y: 113
+        X: 162
+        Y: 118
+        X: 160
+        Y: 120
+      ColorIndex: 4
+      Vertices  : 4
+        X: 113
+        Y: 104
+        X: 114
+        Y: 101
+        X: 105
+        Y: 73
+        X: 104
+        Y: 78
+      ColorIndex: 1
+      Vertices  : 4
+        X: 81
+        Y: 76
+        X: 80
+        Y: 71
+        X: 82
+        Y: 83
+        X: 82
+        Y: 87
+      ColorIndex: 3
+      Vertices  : 4
+        X: 120
+        Y: 91
+        X: 120
+        Y: 95
+        X: 124
+        Y: 74
+        X: 122
+        Y: 75
+      ColorIndex: 5
+      Vertices  : 4
+        X: 116
+        Y: 74
+        X: 116
+        Y: 73
+        X: 120
+        Y: 95
+        X: 120
+        Y: 91
+      ColorIndex: 1
+      Vertices  : 4
+        X: 122
+        Y: 120
+        X: 118
+        Y: 120
+        X: 113
+        Y: 121
+        X: 125
+        Y: 121
+      ColorIndex: 3
+      Vertices  : 4
+        X: 120
+        Y: 119
+        X: 119
+        Y: 119
+        X: 118
+        Y: 120
+        X: 122
+        Y: 120
+      ColorIndex: 2
+      Vertices  : 3
+        X: 126
+        Y: 100
+        X: 124
+        Y: 74
+        X: 120
+        Y: 95
+      ColorIndex: 5
+      Vertices  : 4
+        X: 133
+        Y: 76
+        X: 132
+        Y: 74
+        X: 126
+        Y: 100
+        X: 126
+        Y: 102
+      ColorIndex: 2
+      Vertices  : 3
+        X: 124
+        Y: 74
+        X: 126
+        Y: 100
+        X: 132
+        Y: 74
+      ColorIndex: 2
+      Vertices  : 3
+        X: 153
+        Y: 116
+        X: 162
+        Y: 118
+        X: 158
+        Y: 111
+      ColorIndex: 2
+      Vertices  : 3
+        X: 153
+        Y: 116
+        X: 158
+        Y: 111
+        X: 147
+        Y: 108
+      ColorIndex: 4
+      Vertices  : 4
+        X: 151
+        Y: 118
+        X: 153
+        Y: 116
+        X: 147
+        Y: 108
+        X: 145
+        Y: 110
+      ColorIndex: 1
+      Vertices  : 4
+        X: 160
+        Y: 120
+        X: 162
+        Y: 118
+        X: 153
+        Y: 116
+        X: 151
+        Y: 118
+      ColorIndex: 1
+      Vertices  : 4
+        X: 96
+        Y: 77
+        X: 96
+        Y: 73
+        X: 91
+        Y: 91
+        X: 91
+        Y: 95
+      ColorIndex: 2
+      Vertices  : 3
+        X: 120
+        Y: 95
+        X: 116
+        Y: 73
+        X: 116
+        Y: 99
+      ColorIndex: 2
+      Vertices  : 3
+        X: 116
+        Y: 99
+        X: 126
+        Y: 100
+        X: 120
+        Y: 95
+      ColorIndex: 3
+      Vertices  : 4
+        X: 114
+        Y: 101
+        X: 116
+        Y: 99
+        X: 107
+        Y: 72
+        X: 105
+        Y: 73
+      ColorIndex: 2
+      Vertices  : 3
+        X: 116
+        Y: 99
+        X: 116
+        Y: 73
+        X: 107
+        Y: 72
+      ColorIndex: 4
+      Vertices  : 4
+        X: 122
+        Y: 119
+        X: 122
+        Y: 120
+        X: 125
+        Y: 121
+        X: 127
+        Y: 119
+      ColorIndex: 5
+      Vertices  : 4
+        X: 96
+        Y: 73
+        X: 95
+        Y: 71
+        X: 89
+        Y: 89
+        X: 91
+        Y: 91
+      ColorIndex: 2
+      Vertices  : 3
+        X: 86
+        Y: 70
+        X: 89
+        Y: 89
+        X: 95
+        Y: 71
+      ColorIndex: 2
+      Vertices  : 3
+        X: 89
+        Y: 89
+        X: 86
+        Y: 70
+        X: 81
+        Y: 87
+      ColorIndex: 3
+      Vertices  : 4
+        X: 82
+        Y: 83
+        X: 81
+        Y: 87
+        X: 86
+        Y: 70
+        X: 86
+        Y: 72
+      ColorIndex: 5
+      Vertices  : 4
+        X: 80
+        Y: 71
+        X: 78
+        Y: 70
+        X: 81
+        Y: 87
+        X: 82
+        Y: 83
+      ColorIndex: 7
+      Vertices  : 4
+        X: 113
+        Y: 121
+        X: 114
+        Y: 119
+        X: 114
+        Y: 101
+        X: 113
+        Y: 104
+      ColorIndex: 4
+      Vertices  : 4
+        X: 118
+        Y: 120
+        X: 118
+        Y: 119
+        X: 114
+        Y: 119
+        X: 113
+        Y: 121
+      ColorIndex: 4
+      Vertices  : 4
+        X: 42
+        Y: 80
+        X: 39
+        Y: 76
+        X: 35
+        Y: 75
+        X: 38
+        Y: 80
+      ColorIndex: 2
+      Vertices  : 3
+        X: 80
+        Y: 91
+        X: 89
+        Y: 89
+        X: 81
+        Y: 87
+      ColorIndex: 8
+      Vertices  : 4
+        X: 48
+        Y: 70
+        X: 46
+        Y: 68
+        X: 51
+        Y: 76
+        X: 54
+        Y: 78
+      ColorIndex: 2
+      Vertices  : 3
+        X: 81
+        Y: 87
+        X: 78
+        Y: 70
+        X: 70
+        Y: 88
+      ColorIndex: 2
+      Vertices  : 3
+        X: 80
+        Y: 91
+        X: 81
+        Y: 87
+        X: 70
+        Y: 88
+      ColorIndex: 3
+      Vertices  : 4
+        X: 69
+        Y: 90
+        X: 70
+        Y: 88
+        X: 68
+        Y: 69
+        X: 67
+        Y: 70
+      ColorIndex: 2
+      Vertices  : 3
+        X: 70
+        Y: 88
+        X: 78
+        Y: 70
+        X: 68
+        Y: 69
+      ColorIndex: 2
+      Vertices  : 3
+        X: 116
+        Y: 99
+        X: 116
+        Y: 116
+        X: 126
+        Y: 100
+      ColorIndex: 1
+      Vertices  : 4
+        X: 114
+        Y: 119
+        X: 116
+        Y: 116
+        X: 116
+        Y: 99
+        X: 114
+        Y: 101
+      ColorIndex: 4
+      Vertices  : 4
+        X: 127
+        Y: 119
+        X: 126
+        Y: 117
+        X: 116
+        Y: 116
+        X: 114
+        Y: 119
+      ColorIndex: 2
+      Vertices  : 3
+        X: 126
+        Y: 100
+        X: 116
+        Y: 116
+        X: 126
+        Y: 117
+      ColorIndex: 2
+      Vertices  : 3
+        X: 38
+        Y: 72
+        X: 51
+        Y: 76
+        X: 46
+        Y: 68
+      ColorIndex: 2
+      Vertices  : 3
+        X: 38
+        Y: 72
+        X: 46
+        Y: 68
+        X: 37
+        Y: 65
+      ColorIndex: 2
+      Vertices  : 3
+        X: 32
+        Y: 72
+        X: 38
+        Y: 72
+        X: 37
+        Y: 65
+      ColorIndex: 2
+      Vertices  : 3
+        X: 32
+        Y: 72
+        X: 37
+        Y: 65
+        X: 26
+        Y: 66
+      ColorIndex: 3
+      Vertices  : 4
+        X: 39
+        Y: 76
+        X: 38
+        Y: 72
+        X: 32
+        Y: 72
+        X: 35
+        Y: 75
+      ColorIndex: 7
+      Vertices  : 4
+        X: 97
+        Y: 121
+        X: 97
+        Y: 119
+        X: 83
+        Y: 119
+        X: 84
+        Y: 121
+      ColorIndex: 6
+      Vertices  : 4
+        X: 91
+        Y: 91
+        X: 89
+        Y: 89
+        X: 95
+        Y: 116
+        X: 97
+        Y: 119
+      ColorIndex: 4
+      Vertices  : 4
+        X: 81
+        Y: 103
+        X: 80
+        Y: 100
+        X: 75
+        Y: 119
+        X: 77
+        Y: 121
+      ColorIndex: 2
+      Vertices  : 3
+        X: 17
+        Y: 73
+        X: 32
+        Y: 72
+        X: 26
+        Y: 66
+      ColorIndex: 3
+      Vertices  : 4
+        X: 56
+        Y: 82
+        X: 54
+        Y: 78
+        X: 48
+        Y: 108
+        X: 51
+        Y: 111
+      ColorIndex: 2
+      Vertices  : 3
+        X: 80
+        Y: 91
+        X: 84
+        Y: 116
+        X: 89
+        Y: 89
+      ColorIndex: 1
+      Vertices  : 4
+        X: 83
+        Y: 119
+        X: 84
+        Y: 116
+        X: 80
+        Y: 91
+        X: 80
+        Y: 100
+      ColorIndex: 4
+      Vertices  : 4
+        X: 97
+        Y: 119
+        X: 95
+        Y: 116
+        X: 84
+        Y: 116
+        X: 83
+        Y: 119
+      ColorIndex: 2
+      Vertices  : 3
+        X: 89
+        Y: 89
+        X: 84
+        Y: 116
+        X: 95
+        Y: 116
+      ColorIndex: 7
+      Vertices  : 4
+        X: 77
+        Y: 121
+        X: 75
+        Y: 119
+        X: 60
+        Y: 119
+        X: 62
+        Y: 121
+      ColorIndex: 2
+      Vertices  : 3
+        X: 70
+        Y: 88
+        X: 73
+        Y: 116
+        X: 80
+        Y: 91
+      ColorIndex: 6
+      Vertices  : 4
+        X: 80
+        Y: 100
+        X: 80
+        Y: 91
+        X: 73
+        Y: 116
+        X: 75
+        Y: 119
+      ColorIndex: 5
+      Vertices  : 4
+        X: 54
+        Y: 78
+        X: 51
+        Y: 76
+        X: 45
+        Y: 106
+        X: 48
+        Y: 108
+      ColorIndex: 4
+      Vertices  : 4
+        X: 38
+        Y: 80
+        X: 35
+        Y: 75
+        X: 26
+        Y: 109
+        X: 30
+        Y: 112
+      ColorIndex: 1
+      Vertices  : 4
+        X: 60
+        Y: 119
+        X: 61
+        Y: 116
+        X: 70
+        Y: 88
+        X: 69
+        Y: 90
+      ColorIndex: 4
+      Vertices  : 4
+        X: 75
+        Y: 119
+        X: 73
+        Y: 116
+        X: 61
+        Y: 116
+        X: 60
+        Y: 119
+      ColorIndex: 2
+      Vertices  : 3
+        X: 73
+        Y: 116
+        X: 70
+        Y: 88
+        X: 61
+        Y: 116
+      ColorIndex: 1
+      Vertices  : 4
+        X: 51
+        Y: 111
+        X: 48
+        Y: 108
+        X: 38
+        Y: 118
+        X: 42
+        Y: 121
+      ColorIndex: 2
+      Vertices  : 3
+        X: 38
+        Y: 72
+        X: 30
+        Y: 108
+        X: 51
+        Y: 76
+      ColorIndex: 2
+      Vertices  : 3
+        X: 45
+        Y: 106
+        X: 51
+        Y: 76
+        X: 30
+        Y: 108
+      ColorIndex: 1
+      Vertices  : 4
+        X: 42
+        Y: 121
+        X: 38
+        Y: 118
+        X: 25
+        Y: 120
+        X: 30
+        Y: 123
+      ColorIndex: 2
+      Vertices  : 3
+        X: 36
+        Y: 116
+        X: 45
+        Y: 106
+        X: 30
+        Y: 108
+      ColorIndex: 6
+      Vertices  : 4
+        X: 48
+        Y: 108
+        X: 45
+        Y: 106
+        X: 36
+        Y: 116
+        X: 38
+        Y: 118
+      ColorIndex: 2
+      Vertices  : 3
+        X: 17
+        Y: 73
+        X: 22
+        Y: 108
+        X: 32
+        Y: 72
+      ColorIndex: 5
+      Vertices  : 4
+        X: 35
+        Y: 75
+        X: 32
+        Y: 72
+        X: 22
+        Y: 108
+        X: 26
+        Y: 109
+      ColorIndex: 4
+      Vertices  : 4
+        X: 30
+        Y: 123
+        X: 25
+        Y: 120
+        X: 12
+        Y: 118
+        X: 18
+        Y: 121
+      ColorIndex: 2
+      Vertices  : 3
+        X: 17
+        Y: 73
+        X: 6
+        Y: 105
+        X: 22
+        Y: 108
+      ColorIndex: 2
+      Vertices  : 3
+        X: 23
+        Y: 117
+        X: 36
+        Y: 116
+        X: 30
+        Y: 108
+      ColorIndex: 3
+      Vertices  : 4
+        X: 38
+        Y: 118
+        X: 36
+        Y: 116
+        X: 23
+        Y: 117
+        X: 25
+        Y: 120
+      ColorIndex: 2
+      Vertices  : 3
+        X: 10
+        Y: 116
+        X: 23
+        Y: 117
+        X: 30
+        Y: 108
+      ColorIndex: 2
+      Vertices  : 3
+        X: 10
+        Y: 116
+        X: 30
+        Y: 108
+        X: 22
+        Y: 108
+      ColorIndex: 2
+      Vertices  : 3
+        X: 6
+        Y: 105
+        X: 10
+        Y: 116
+        X: 22
+        Y: 108
+      ColorIndex: 1
+      Vertices  : 4
+        X: 25
+        Y: 120
+        X: 23
+        Y: 117
+        X: 10
+        Y: 116
+        X: 12
+        Y: 118
