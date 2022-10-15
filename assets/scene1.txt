@@ -1,1506 +1,1101 @@
 
-Frame ReadResult: Next
-  Frame
-    ClearScreen : true
-    PaletteDelta: 8
-      ColorIndex: 8
-      RGB       : a40
-      ColorIndex: 7
-      RGB       : ff0
-      ColorIndex: 6
-      RGB       : c60
-      ColorIndex: 5
-      RGB       : 820
-      ColorIndex: 4
-      RGB       : fa0
-      ColorIndex: 3
-      RGB       : e80
-      ColorIndex: 2
-      RGB       : 600
-      ColorIndex: 1
-      RGB       : fff
-    Polygons    : 164
-      ColorIndex: 2
-      Vertices  : 3
-        X: 227
-        Y: 82
-        X: 240
-        Y: 88
-        X: 238
-        Y: 83
-      ColorIndex: 2
-      Vertices  : 3
-        X: 236
-        Y: 88
-        X: 240
-        Y: 88
-        X: 227
-        Y: 82
-      ColorIndex: 3
-      Vertices  : 4
-        X: 238
-        Y: 90
-        X: 240
-        Y: 88
-        X: 236
-        Y: 88
-        X: 234
-        Y: 90
-      ColorIndex: 2
-      Vertices  : 3
-        X: 239
-        Y: 96
-        X: 246
-        Y: 101
-        X: 244
-        Y: 96
-      ColorIndex: 2
-      Vertices  : 3
-        X: 241
-        Y: 101
-        X: 246
-        Y: 101
-        X: 239
-        Y: 96
-      ColorIndex: 3
-      Vertices  : 4
-        X: 244
-        Y: 103
-        X: 246
-        Y: 101
-        X: 241
-        Y: 101
-        X: 239
-        Y: 103
-      ColorIndex: 2
-      Vertices  : 3
-        X: 246
-        Y: 111
-        X: 254
-        Y: 117
-        X: 251
-        Y: 111
-      ColorIndex: 2
-      Vertices  : 3
-        X: 211
-        Y: 93
-        X: 207
-        Y: 81
-        X: 201
-        Y: 80
-      ColorIndex: 4
-      Vertices  : 4
-        X: 187
-        Y: 90
-        X: 191
-        Y: 87
-        X: 185
-        Y: 87
-        X: 181
-        Y: 90
-      ColorIndex: 7
-      Vertices  : 4
-        X: 244
-        Y: 121
-        X: 251
-        Y: 119
-        X: 238
-        Y: 119
-        X: 231
-        Y: 121
-      ColorIndex: 4
-      Vertices  : 4
-        X: 231
-        Y: 121
-        X: 238
-        Y: 119
-        X: 223
-        Y: 83
-        X: 218
-        Y: 86
-      ColorIndex: 2
-      Vertices  : 3
-        X: 211
-        Y: 93
-        X: 220
-        Y: 102
-        X: 207
-        Y: 81
-      ColorIndex: 4
-      Vertices  : 4
-        X: 214
-        Y: 97
-        X: 220
-        Y: 102
-        X: 213
-        Y: 81
-        X: 209
-        Y: 82
-      ColorIndex: 2
-      Vertices  : 3
-        X: 177
-        Y: 78
-        X: 192
-        Y: 85
-        X: 191
-        Y: 79
-      ColorIndex: 2
-      Vertices  : 3
-        X: 186
-        Y: 84
-        X: 192
-        Y: 85
-        X: 177
-        Y: 78
-      ColorIndex: 4
-      Vertices  : 4
-        X: 191
-        Y: 87
-        X: 192
-        Y: 85
-        X: 186
-        Y: 84
-        X: 185
-        Y: 87
-      ColorIndex: 2
-      Vertices  : 3
-        X: 236
-        Y: 88
-        X: 227
-        Y: 82
-        X: 242
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 239
-        Y: 96
-        X: 236
-        Y: 88
-        X: 242
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 241
-        Y: 101
-        X: 239
-        Y: 96
-        X: 242
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 246
-        Y: 111
-        X: 241
-        Y: 101
-        X: 242
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 246
-        Y: 111
-        X: 242
-        Y: 117
-        X: 254
-        Y: 117
-      ColorIndex: 4
-      Vertices  : 4
-        X: 251
-        Y: 119
-        X: 254
-        Y: 117
-        X: 242
-        Y: 117
-        X: 238
-        Y: 119
-      ColorIndex: 3
-      Vertices  : 4
-        X: 238
-        Y: 119
-        X: 242
-        Y: 117
-        X: 227
-        Y: 82
-        X: 223
-        Y: 83
-      ColorIndex: 4
-      Vertices  : 4
-        X: 215
-        Y: 121
-        X: 222
-        Y: 119
-        X: 211
-        Y: 101
-        X: 205
-        Y: 103
-      ColorIndex: 7
-      Vertices  : 4
-        X: 223
-        Y: 121
-        X: 229
-        Y: 119
-        X: 222
-        Y: 119
-        X: 215
-        Y: 121
-      ColorIndex: 4
-      Vertices  : 4
-        X: 190
-        Y: 104
-        X: 195
-        Y: 101
-        X: 189
-        Y: 101
-        X: 184
-        Y: 104
-      ColorIndex: 2
-      Vertices  : 3
-        X: 231
-        Y: 117
-        X: 213
-        Y: 81
-        X: 220
-        Y: 102
-      ColorIndex: 2
-      Vertices  : 3
-        X: 213
-        Y: 81
-        X: 231
-        Y: 117
-        X: 218
-        Y: 81
-      ColorIndex: 2
-      Vertices  : 3
-        X: 188
-        Y: 93
-        X: 196
-        Y: 99
-        X: 194
-        Y: 94
-      ColorIndex: 4
-      Vertices  : 4
-        X: 152
-        Y: 87
-        X: 155
-        Y: 84
-        X: 152
-        Y: 83
-        X: 150
-        Y: 87
-      ColorIndex: 2
-      Vertices  : 3
-        X: 225
-        Y: 117
-        X: 231
-        Y: 117
-        X: 220
-        Y: 102
-      ColorIndex: 2
-      Vertices  : 3
-        X: 211
-        Y: 93
-        X: 225
-        Y: 117
-        X: 220
-        Y: 102
-      ColorIndex: 3
-      Vertices  : 4
-        X: 222
-        Y: 119
-        X: 225
-        Y: 117
-        X: 211
-        Y: 93
-        X: 211
-        Y: 101
-      ColorIndex: 4
-      Vertices  : 4
-        X: 229
-        Y: 119
-        X: 231
-        Y: 117
-        X: 225
-        Y: 117
-        X: 222
-        Y: 119
-      ColorIndex: 4
-      Vertices  : 4
-        X: 203
-        Y: 121
-        X: 209
-        Y: 119
-        X: 197
-        Y: 81
-        X: 193
-        Y: 84
-      ColorIndex: 7
-      Vertices  : 4
-        X: 211
-        Y: 121
-        X: 217
-        Y: 119
-        X: 209
-        Y: 119
-        X: 203
-        Y: 121
-      ColorIndex: 2
-      Vertices  : 3
-        X: 190
-        Y: 99
-        X: 196
-        Y: 99
-        X: 188
-        Y: 93
-      ColorIndex: 4
-      Vertices  : 4
-        X: 195
-        Y: 101
-        X: 196
-        Y: 99
-        X: 190
-        Y: 99
-        X: 189
-        Y: 101
-      ColorIndex: 2
-      Vertices  : 3
-        X: 158
-        Y: 81
-        X: 165
-        Y: 82
-        X: 161
-        Y: 78
-      ColorIndex: 2
-      Vertices  : 3
-        X: 158
-        Y: 81
-        X: 161
-        Y: 78
-        X: 154
-        Y: 75
-      ColorIndex: 4
-      Vertices  : 4
-        X: 153
-        Y: 95
-        X: 157
-        Y: 91
-        X: 155
-        Y: 84
-        X: 152
-        Y: 87
-      ColorIndex: 4
-      Vertices  : 4
-        X: 163
-        Y: 95
-        X: 167
-        Y: 92
-        X: 157
-        Y: 91
-        X: 153
-        Y: 95
-      ColorIndex: 2
-      Vertices  : 3
-        X: 153
-        Y: 80
-        X: 158
-        Y: 81
-        X: 154
-        Y: 75
-      ColorIndex: 2
-      Vertices  : 3
-        X: 153
-        Y: 80
-        X: 154
-        Y: 75
-        X: 147
-        Y: 77
-      ColorIndex: 4
-      Vertices  : 4
-        X: 155
-        Y: 84
-        X: 158
-        Y: 81
-        X: 153
-        Y: 80
-        X: 152
-        Y: 83
-      ColorIndex: 2
-      Vertices  : 3
-        X: 211
-        Y: 93
-        X: 201
-        Y: 80
-        X: 213
-        Y: 117
-      ColorIndex: 3
-      Vertices  : 4
-        X: 209
-        Y: 119
-        X: 213
-        Y: 117
-        X: 201
-        Y: 80
-        X: 197
-        Y: 81
-      ColorIndex: 4
-      Vertices  : 4
-        X: 217
-        Y: 119
-        X: 219
-        Y: 117
-        X: 213
-        Y: 117
-        X: 209
-        Y: 119
-      ColorIndex: 2
-      Vertices  : 3
-        X: 211
-        Y: 93
-        X: 213
-        Y: 117
-        X: 219
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 158
-        Y: 81
-        X: 159
-        Y: 89
-        X: 165
-        Y: 82
-      ColorIndex: 1
-      Vertices  : 4
-        X: 157
-        Y: 91
-        X: 159
-        Y: 89
-        X: 158
-        Y: 81
-        X: 155
-        Y: 84
-      ColorIndex: 4
-      Vertices  : 4
-        X: 167
-        Y: 92
-        X: 168
-        Y: 89
-        X: 159
-        Y: 89
-        X: 157
-        Y: 91
-      ColorIndex: 2
-      Vertices  : 3
-        X: 165
-        Y: 82
-        X: 159
-        Y: 89
-        X: 168
-        Y: 89
-      ColorIndex: 2
-      Vertices  : 3
-        X: 153
-        Y: 80
-        X: 147
-        Y: 77
-        X: 144
-        Y: 80
-      ColorIndex: 3
-      Vertices  : 4
-        X: 142
-        Y: 82
-        X: 144
-        Y: 80
-        X: 147
-        Y: 77
-        X: 145
-        Y: 78
-      ColorIndex: 2
-      Vertices  : 3
-        X: 193
-        Y: 110
-        X: 202
-        Y: 117
-        X: 200
-        Y: 110
-      ColorIndex: 7
-      Vertices  : 4
-        X: 195
-        Y: 121
-        X: 201
-        Y: 119
-        X: 183
-        Y: 119
-        X: 178
-        Y: 121
-      ColorIndex: 4
-      Vertices  : 4
-        X: 178
-        Y: 121
-        X: 183
-        Y: 119
-        X: 174
-        Y: 79
-        X: 170
-        Y: 82
-      ColorIndex: 2
-      Vertices  : 3
-        X: 169
-        Y: 95
-        X: 158
-        Y: 95
-        X: 161
-        Y: 99
-      ColorIndex: 1
-      Vertices  : 4
-        X: 156
-        Y: 102
-        X: 159
-        Y: 99
-        X: 158
-        Y: 95
-        X: 155
-        Y: 95
-      ColorIndex: 4
-      Vertices  : 4
-        X: 159
-        Y: 102
-        X: 161
-        Y: 99
-        X: 159
-        Y: 99
-        X: 156
-        Y: 102
-      ColorIndex: 2
-      Vertices  : 3
-        X: 161
-        Y: 99
-        X: 158
-        Y: 95
-        X: 159
-        Y: 99
-      ColorIndex: 4
-      Vertices  : 4
-        X: 156
-        Y: 113
-        X: 160
-        Y: 111
-        X: 159
-        Y: 102
-        X: 155
-        Y: 104
-      ColorIndex: 2
-      Vertices  : 3
-        X: 186
-        Y: 84
-        X: 177
-        Y: 78
-        X: 186
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 188
-        Y: 93
-        X: 186
-        Y: 84
-        X: 186
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 190
-        Y: 99
-        X: 188
-        Y: 93
-        X: 186
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 193
-        Y: 110
-        X: 190
-        Y: 99
-        X: 186
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 193
-        Y: 110
-        X: 186
-        Y: 117
-        X: 202
-        Y: 117
-      ColorIndex: 4
-      Vertices  : 4
-        X: 201
-        Y: 119
-        X: 202
-        Y: 117
-        X: 186
-        Y: 117
-        X: 183
-        Y: 119
-      ColorIndex: 3
-      Vertices  : 4
-        X: 183
-        Y: 119
-        X: 186
-        Y: 117
-        X: 177
-        Y: 78
-        X: 174
-        Y: 79
-      ColorIndex: 4
-      Vertices  : 4
-        X: 118
-        Y: 94
-        X: 120
-        Y: 91
-        X: 122
-        Y: 75
-        X: 121
-        Y: 79
-      ColorIndex: 4
-      Vertices  : 4
-        X: 162
-        Y: 121
-        X: 165
-        Y: 119
-        X: 164
-        Y: 116
-        X: 160
-        Y: 118
-      ColorIndex: 7
-      Vertices  : 4
-        X: 168
-        Y: 121
-        X: 172
-        Y: 119
-        X: 165
-        Y: 119
-        X: 162
-        Y: 121
-      ColorIndex: 4
-      Vertices  : 4
-        X: 142
-        Y: 113
-        X: 145
-        Y: 110
-        X: 142
-        Y: 82
-        X: 139
-        Y: 86
-      ColorIndex: 2
-      Vertices  : 3
-        X: 173
-        Y: 117
-        X: 169
-        Y: 95
-        X: 161
-        Y: 99
-      ColorIndex: 1
-      Vertices  : 4
-        X: 160
-        Y: 111
-        X: 163
-        Y: 111
-        X: 161
-        Y: 99
-        X: 159
-        Y: 102
-      ColorIndex: 2
-      Vertices  : 3
-        X: 166
-        Y: 113
-        X: 161
-        Y: 99
-        X: 163
-        Y: 111
-      ColorIndex: 2
-      Vertices  : 3
-        X: 168
-        Y: 117
-        X: 173
-        Y: 117
-        X: 161
-        Y: 99
-      ColorIndex: 2
-      Vertices  : 3
-        X: 166
-        Y: 113
-        X: 168
-        Y: 117
-        X: 161
-        Y: 99
-      ColorIndex: 4
-      Vertices  : 4
-        X: 165
-        Y: 119
-        X: 168
-        Y: 117
-        X: 166
-        Y: 113
-        X: 164
-        Y: 116
-      ColorIndex: 4
-      Vertices  : 4
-        X: 172
-        Y: 119
-        X: 173
-        Y: 117
-        X: 168
-        Y: 117
-        X: 165
-        Y: 119
-      ColorIndex: 2
-      Vertices  : 3
-        X: 158
-        Y: 111
-        X: 153
-        Y: 80
-        X: 144
-        Y: 80
-      ColorIndex: 7
-      Vertices  : 4
-        X: 147
-        Y: 120
-        X: 151
-        Y: 118
-        X: 145
-        Y: 110
-        X: 142
-        Y: 113
-      ColorIndex: 4
-      Vertices  : 4
-        X: 156
-        Y: 122
-        X: 160
-        Y: 120
-        X: 151
-        Y: 118
-        X: 147
-        Y: 120
-      ColorIndex: 2
-      Vertices  : 3
-        X: 158
-        Y: 111
-        X: 144
-        Y: 80
-        X: 147
-        Y: 108
-      ColorIndex: 1
-      Vertices  : 4
-        X: 145
-        Y: 110
-        X: 147
-        Y: 108
-        X: 144
-        Y: 80
-        X: 142
-        Y: 82
-      ColorIndex: 2
-      Vertices  : 3
-        X: 162
-        Y: 118
-        X: 166
-        Y: 113
-        X: 163
-        Y: 111
-      ColorIndex: 2
-      Vertices  : 3
-        X: 162
-        Y: 118
-        X: 163
-        Y: 111
-        X: 158
-        Y: 111
-      ColorIndex: 3
-      Vertices  : 4
-        X: 164
-        Y: 116
-        X: 166
-        Y: 113
-        X: 162
-        Y: 118
-        X: 160
-        Y: 120
-      ColorIndex: 4
-      Vertices  : 4
-        X: 113
-        Y: 104
-        X: 114
-        Y: 101
-        X: 105
-        Y: 73
-        X: 104
-        Y: 78
-      ColorIndex: 1
-      Vertices  : 4
-        X: 81
-        Y: 76
-        X: 80
-        Y: 71
-        X: 82
-        Y: 83
-        X: 82
-        Y: 87
-      ColorIndex: 3
-      Vertices  : 4
-        X: 120
-        Y: 91
-        X: 120
-        Y: 95
-        X: 124
-        Y: 74
-        X: 122
-        Y: 75
-      ColorIndex: 5
-      Vertices  : 4
-        X: 116
-        Y: 74
-        X: 116
-        Y: 73
-        X: 120
-        Y: 95
-        X: 120
-        Y: 91
-      ColorIndex: 1
-      Vertices  : 4
-        X: 122
-        Y: 120
-        X: 118
-        Y: 120
-        X: 113
-        Y: 121
-        X: 125
-        Y: 121
-      ColorIndex: 3
-      Vertices  : 4
-        X: 120
-        Y: 119
-        X: 119
-        Y: 119
-        X: 118
-        Y: 120
-        X: 122
-        Y: 120
-      ColorIndex: 2
-      Vertices  : 3
-        X: 126
-        Y: 100
-        X: 124
-        Y: 74
-        X: 120
-        Y: 95
-      ColorIndex: 5
-      Vertices  : 4
-        X: 133
-        Y: 76
-        X: 132
-        Y: 74
-        X: 126
-        Y: 100
-        X: 126
-        Y: 102
-      ColorIndex: 2
-      Vertices  : 3
-        X: 124
-        Y: 74
-        X: 126
-        Y: 100
-        X: 132
-        Y: 74
-      ColorIndex: 2
-      Vertices  : 3
-        X: 153
-        Y: 116
-        X: 162
-        Y: 118
-        X: 158
-        Y: 111
-      ColorIndex: 2
-      Vertices  : 3
-        X: 153
-        Y: 116
-        X: 158
-        Y: 111
-        X: 147
-        Y: 108
-      ColorIndex: 4
-      Vertices  : 4
-        X: 151
-        Y: 118
-        X: 153
-        Y: 116
-        X: 147
-        Y: 108
-        X: 145
-        Y: 110
-      ColorIndex: 1
-      Vertices  : 4
-        X: 160
-        Y: 120
-        X: 162
-        Y: 118
-        X: 153
-        Y: 116
-        X: 151
-        Y: 118
-      ColorIndex: 1
-      Vertices  : 4
-        X: 96
-        Y: 77
-        X: 96
-        Y: 73
-        X: 91
-        Y: 91
-        X: 91
-        Y: 95
-      ColorIndex: 2
-      Vertices  : 3
-        X: 120
-        Y: 95
-        X: 116
-        Y: 73
-        X: 116
-        Y: 99
-      ColorIndex: 2
-      Vertices  : 3
-        X: 116
-        Y: 99
-        X: 126
-        Y: 100
-        X: 120
-        Y: 95
-      ColorIndex: 3
-      Vertices  : 4
-        X: 114
-        Y: 101
-        X: 116
-        Y: 99
-        X: 107
-        Y: 72
-        X: 105
-        Y: 73
-      ColorIndex: 2
-      Vertices  : 3
-        X: 116
-        Y: 99
-        X: 116
-        Y: 73
-        X: 107
-        Y: 72
-      ColorIndex: 4
-      Vertices  : 4
-        X: 122
-        Y: 119
-        X: 122
-        Y: 120
-        X: 125
-        Y: 121
-        X: 127
-        Y: 119
-      ColorIndex: 5
-      Vertices  : 4
-        X: 96
-        Y: 73
-        X: 95
-        Y: 71
-        X: 89
-        Y: 89
-        X: 91
-        Y: 91
-      ColorIndex: 2
-      Vertices  : 3
-        X: 86
-        Y: 70
-        X: 89
-        Y: 89
-        X: 95
-        Y: 71
-      ColorIndex: 2
-      Vertices  : 3
-        X: 89
-        Y: 89
-        X: 86
-        Y: 70
-        X: 81
-        Y: 87
-      ColorIndex: 3
-      Vertices  : 4
-        X: 82
-        Y: 83
-        X: 81
-        Y: 87
-        X: 86
-        Y: 70
-        X: 86
-        Y: 72
-      ColorIndex: 5
-      Vertices  : 4
-        X: 80
-        Y: 71
-        X: 78
-        Y: 70
-        X: 81
-        Y: 87
-        X: 82
-        Y: 83
-      ColorIndex: 7
-      Vertices  : 4
-        X: 113
-        Y: 121
-        X: 114
-        Y: 119
-        X: 114
-        Y: 101
-        X: 113
-        Y: 104
-      ColorIndex: 4
-      Vertices  : 4
-        X: 118
-        Y: 120
-        X: 118
-        Y: 119
-        X: 114
-        Y: 119
-        X: 113
-        Y: 121
-      ColorIndex: 4
-      Vertices  : 4
-        X: 42
-        Y: 80
-        X: 39
-        Y: 76
-        X: 35
-        Y: 75
-        X: 38
-        Y: 80
-      ColorIndex: 2
-      Vertices  : 3
-        X: 80
-        Y: 91
-        X: 89
-        Y: 89
-        X: 81
-        Y: 87
-      ColorIndex: 8
-      Vertices  : 4
-        X: 48
-        Y: 70
-        X: 46
-        Y: 68
-        X: 51
-        Y: 76
-        X: 54
-        Y: 78
-      ColorIndex: 2
-      Vertices  : 3
-        X: 81
-        Y: 87
-        X: 78
-        Y: 70
-        X: 70
-        Y: 88
-      ColorIndex: 2
-      Vertices  : 3
-        X: 80
-        Y: 91
-        X: 81
-        Y: 87
-        X: 70
-        Y: 88
-      ColorIndex: 3
-      Vertices  : 4
-        X: 69
-        Y: 90
-        X: 70
-        Y: 88
-        X: 68
-        Y: 69
-        X: 67
-        Y: 70
-      ColorIndex: 2
-      Vertices  : 3
-        X: 70
-        Y: 88
-        X: 78
-        Y: 70
-        X: 68
-        Y: 69
-      ColorIndex: 2
-      Vertices  : 3
-        X: 116
-        Y: 99
-        X: 116
-        Y: 116
-        X: 126
-        Y: 100
-      ColorIndex: 1
-      Vertices  : 4
-        X: 114
-        Y: 119
-        X: 116
-        Y: 116
-        X: 116
-        Y: 99
-        X: 114
-        Y: 101
-      ColorIndex: 4
-      Vertices  : 4
-        X: 127
-        Y: 119
-        X: 126
-        Y: 117
-        X: 116
-        Y: 116
-        X: 114
-        Y: 119
-      ColorIndex: 2
-      Vertices  : 3
-        X: 126
-        Y: 100
-        X: 116
-        Y: 116
-        X: 126
-        Y: 117
-      ColorIndex: 2
-      Vertices  : 3
-        X: 38
-        Y: 72
-        X: 51
-        Y: 76
-        X: 46
-        Y: 68
-      ColorIndex: 2
-      Vertices  : 3
-        X: 38
-        Y: 72
-        X: 46
-        Y: 68
-        X: 37
-        Y: 65
-      ColorIndex: 2
-      Vertices  : 3
-        X: 32
-        Y: 72
-        X: 38
-        Y: 72
-        X: 37
-        Y: 65
-      ColorIndex: 2
-      Vertices  : 3
-        X: 32
-        Y: 72
-        X: 37
-        Y: 65
-        X: 26
-        Y: 66
-      ColorIndex: 3
-      Vertices  : 4
-        X: 39
-        Y: 76
-        X: 38
-        Y: 72
-        X: 32
-        Y: 72
-        X: 35
-        Y: 75
-      ColorIndex: 7
-      Vertices  : 4
-        X: 97
-        Y: 121
-        X: 97
-        Y: 119
-        X: 83
-        Y: 119
-        X: 84
-        Y: 121
-      ColorIndex: 6
-      Vertices  : 4
-        X: 91
-        Y: 91
-        X: 89
-        Y: 89
-        X: 95
-        Y: 116
-        X: 97
-        Y: 119
-      ColorIndex: 4
-      Vertices  : 4
-        X: 81
-        Y: 103
-        X: 80
-        Y: 100
-        X: 75
-        Y: 119
-        X: 77
-        Y: 121
-      ColorIndex: 2
-      Vertices  : 3
-        X: 17
-        Y: 73
-        X: 32
-        Y: 72
-        X: 26
-        Y: 66
-      ColorIndex: 3
-      Vertices  : 4
-        X: 56
-        Y: 82
-        X: 54
-        Y: 78
-        X: 48
-        Y: 108
-        X: 51
-        Y: 111
-      ColorIndex: 2
-      Vertices  : 3
-        X: 80
-        Y: 91
-        X: 84
-        Y: 116
-        X: 89
-        Y: 89
-      ColorIndex: 1
-      Vertices  : 4
-        X: 83
-        Y: 119
-        X: 84
-        Y: 116
-        X: 80
-        Y: 91
-        X: 80
-        Y: 100
-      ColorIndex: 4
-      Vertices  : 4
-        X: 97
-        Y: 119
-        X: 95
-        Y: 116
-        X: 84
-        Y: 116
-        X: 83
-        Y: 119
-      ColorIndex: 2
-      Vertices  : 3
-        X: 89
-        Y: 89
-        X: 84
-        Y: 116
-        X: 95
-        Y: 116
-      ColorIndex: 7
-      Vertices  : 4
-        X: 77
-        Y: 121
-        X: 75
-        Y: 119
-        X: 60
-        Y: 119
-        X: 62
-        Y: 121
-      ColorIndex: 2
-      Vertices  : 3
-        X: 70
-        Y: 88
-        X: 73
-        Y: 116
-        X: 80
-        Y: 91
-      ColorIndex: 6
-      Vertices  : 4
-        X: 80
-        Y: 100
-        X: 80
-        Y: 91
-        X: 73
-        Y: 116
-        X: 75
-        Y: 119
-      ColorIndex: 5
-      Vertices  : 4
-        X: 54
-        Y: 78
-        X: 51
-        Y: 76
-        X: 45
-        Y: 106
-        X: 48
-        Y: 108
-      ColorIndex: 4
-      Vertices  : 4
-        X: 38
-        Y: 80
-        X: 35
-        Y: 75
-        X: 26
-        Y: 109
-        X: 30
-        Y: 112
-      ColorIndex: 1
-      Vertices  : 4
-        X: 60
-        Y: 119
-        X: 61
-        Y: 116
-        X: 70
-        Y: 88
-        X: 69
-        Y: 90
-      ColorIndex: 4
-      Vertices  : 4
-        X: 75
-        Y: 119
-        X: 73
-        Y: 116
-        X: 61
-        Y: 116
-        X: 60
-        Y: 119
-      ColorIndex: 2
-      Vertices  : 3
-        X: 73
-        Y: 116
-        X: 70
-        Y: 88
-        X: 61
-        Y: 116
-      ColorIndex: 1
-      Vertices  : 4
-        X: 51
-        Y: 111
-        X: 48
-        Y: 108
-        X: 38
-        Y: 118
-        X: 42
-        Y: 121
-      ColorIndex: 2
-      Vertices  : 3
-        X: 38
-        Y: 72
-        X: 30
-        Y: 108
-        X: 51
-        Y: 76
-      ColorIndex: 2
-      Vertices  : 3
-        X: 45
-        Y: 106
-        X: 51
-        Y: 76
-        X: 30
-        Y: 108
-      ColorIndex: 1
-      Vertices  : 4
-        X: 42
-        Y: 121
-        X: 38
-        Y: 118
-        X: 25
-        Y: 120
-        X: 30
-        Y: 123
-      ColorIndex: 2
-      Vertices  : 3
-        X: 36
-        Y: 116
-        X: 45
-        Y: 106
-        X: 30
-        Y: 108
-      ColorIndex: 6
-      Vertices  : 4
-        X: 48
-        Y: 108
-        X: 45
-        Y: 106
-        X: 36
-        Y: 116
-        X: 38
-        Y: 118
-      ColorIndex: 2
-      Vertices  : 3
-        X: 17
-        Y: 73
-        X: 22
-        Y: 108
-        X: 32
-        Y: 72
-      ColorIndex: 5
-      Vertices  : 4
-        X: 35
-        Y: 75
-        X: 32
-        Y: 72
-        X: 22
-        Y: 108
-        X: 26
-        Y: 109
-      ColorIndex: 4
-      Vertices  : 4
-        X: 30
-        Y: 123
-        X: 25
-        Y: 120
-        X: 12
-        Y: 118
-        X: 18
-        Y: 121
-      ColorIndex: 2
-      Vertices  : 3
-        X: 17
-        Y: 73
-        X: 6
-        Y: 105
-        X: 22
-        Y: 108
-      ColorIndex: 2
-      Vertices  : 3
-        X: 23
-        Y: 117
-        X: 36
-        Y: 116
-        X: 30
-        Y: 108
-      ColorIndex: 3
-      Vertices  : 4
-        X: 38
-        Y: 118
-        X: 36
-        Y: 116
-        X: 23
-        Y: 117
-        X: 25
-        Y: 120
-      ColorIndex: 2
-      Vertices  : 3
-        X: 10
-        Y: 116
-        X: 23
-        Y: 117
-        X: 30
-        Y: 108
-      ColorIndex: 2
-      Vertices  : 3
-        X: 10
-        Y: 116
-        X: 30
-        Y: 108
-        X: 22
-        Y: 108
-      ColorIndex: 2
-      Vertices  : 3
-        X: 6
-        Y: 105
-        X: 10
-        Y: 116
-        X: 22
-        Y: 108
-      ColorIndex: 1
-      Vertices  : 4
-        X: 25
-        Y: 120
-        X: 23
-        Y: 117
-        X: 10
-        Y: 116
-        X: 12
-        Y: 118
+Scene
+  Frames: 1
+    Frame
+      ClearScreen : true
+      PaletteDelta: 8
+        PaletteItem
+          ColorIndex: 8
+          RGB       : a40
+        PaletteItem
+          ColorIndex: 7
+          RGB       : ff0
+        PaletteItem
+          ColorIndex: 6
+          RGB       : c60
+        PaletteItem
+          ColorIndex: 5
+          RGB       : 820
+        PaletteItem
+          ColorIndex: 4
+          RGB       : fa0
+        PaletteItem
+          ColorIndex: 3
+          RGB       : e80
+        PaletteItem
+          ColorIndex: 2
+          RGB       : 600
+        PaletteItem
+          ColorIndex: 1
+          RGB       : fff
+      Polygons    : 164
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 227, 082
+            Vertex: 240, 088
+            Vertex: 238, 083
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 236, 088
+            Vertex: 240, 088
+            Vertex: 227, 082
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 238, 090
+            Vertex: 240, 088
+            Vertex: 236, 088
+            Vertex: 234, 090
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 239, 096
+            Vertex: 246, 101
+            Vertex: 244, 096
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 241, 101
+            Vertex: 246, 101
+            Vertex: 239, 096
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 244, 103
+            Vertex: 246, 101
+            Vertex: 241, 101
+            Vertex: 239, 103
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 246, 111
+            Vertex: 254, 117
+            Vertex: 251, 111
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 211, 093
+            Vertex: 207, 081
+            Vertex: 201, 080
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 187, 090
+            Vertex: 191, 087
+            Vertex: 185, 087
+            Vertex: 181, 090
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 244, 121
+            Vertex: 251, 119
+            Vertex: 238, 119
+            Vertex: 231, 121
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 231, 121
+            Vertex: 238, 119
+            Vertex: 223, 083
+            Vertex: 218, 086
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 211, 093
+            Vertex: 220, 102
+            Vertex: 207, 081
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 214, 097
+            Vertex: 220, 102
+            Vertex: 213, 081
+            Vertex: 209, 082
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 177, 078
+            Vertex: 192, 085
+            Vertex: 191, 079
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 186, 084
+            Vertex: 192, 085
+            Vertex: 177, 078
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 191, 087
+            Vertex: 192, 085
+            Vertex: 186, 084
+            Vertex: 185, 087
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 236, 088
+            Vertex: 227, 082
+            Vertex: 242, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 239, 096
+            Vertex: 236, 088
+            Vertex: 242, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 241, 101
+            Vertex: 239, 096
+            Vertex: 242, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 246, 111
+            Vertex: 241, 101
+            Vertex: 242, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 246, 111
+            Vertex: 242, 117
+            Vertex: 254, 117
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 251, 119
+            Vertex: 254, 117
+            Vertex: 242, 117
+            Vertex: 238, 119
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 238, 119
+            Vertex: 242, 117
+            Vertex: 227, 082
+            Vertex: 223, 083
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 215, 121
+            Vertex: 222, 119
+            Vertex: 211, 101
+            Vertex: 205, 103
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 223, 121
+            Vertex: 229, 119
+            Vertex: 222, 119
+            Vertex: 215, 121
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 190, 104
+            Vertex: 195, 101
+            Vertex: 189, 101
+            Vertex: 184, 104
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 231, 117
+            Vertex: 213, 081
+            Vertex: 220, 102
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 213, 081
+            Vertex: 231, 117
+            Vertex: 218, 081
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 188, 093
+            Vertex: 196, 099
+            Vertex: 194, 094
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 152, 087
+            Vertex: 155, 084
+            Vertex: 152, 083
+            Vertex: 150, 087
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 225, 117
+            Vertex: 231, 117
+            Vertex: 220, 102
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 211, 093
+            Vertex: 225, 117
+            Vertex: 220, 102
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 222, 119
+            Vertex: 225, 117
+            Vertex: 211, 093
+            Vertex: 211, 101
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 229, 119
+            Vertex: 231, 117
+            Vertex: 225, 117
+            Vertex: 222, 119
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 203, 121
+            Vertex: 209, 119
+            Vertex: 197, 081
+            Vertex: 193, 084
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 211, 121
+            Vertex: 217, 119
+            Vertex: 209, 119
+            Vertex: 203, 121
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 190, 099
+            Vertex: 196, 099
+            Vertex: 188, 093
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 195, 101
+            Vertex: 196, 099
+            Vertex: 190, 099
+            Vertex: 189, 101
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 158, 081
+            Vertex: 165, 082
+            Vertex: 161, 078
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 158, 081
+            Vertex: 161, 078
+            Vertex: 154, 075
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 153, 095
+            Vertex: 157, 091
+            Vertex: 155, 084
+            Vertex: 152, 087
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 163, 095
+            Vertex: 167, 092
+            Vertex: 157, 091
+            Vertex: 153, 095
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 153, 080
+            Vertex: 158, 081
+            Vertex: 154, 075
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 153, 080
+            Vertex: 154, 075
+            Vertex: 147, 077
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 155, 084
+            Vertex: 158, 081
+            Vertex: 153, 080
+            Vertex: 152, 083
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 211, 093
+            Vertex: 201, 080
+            Vertex: 213, 117
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 209, 119
+            Vertex: 213, 117
+            Vertex: 201, 080
+            Vertex: 197, 081
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 217, 119
+            Vertex: 219, 117
+            Vertex: 213, 117
+            Vertex: 209, 119
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 211, 093
+            Vertex: 213, 117
+            Vertex: 219, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 158, 081
+            Vertex: 159, 089
+            Vertex: 165, 082
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 157, 091
+            Vertex: 159, 089
+            Vertex: 158, 081
+            Vertex: 155, 084
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 167, 092
+            Vertex: 168, 089
+            Vertex: 159, 089
+            Vertex: 157, 091
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 165, 082
+            Vertex: 159, 089
+            Vertex: 168, 089
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 153, 080
+            Vertex: 147, 077
+            Vertex: 144, 080
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 142, 082
+            Vertex: 144, 080
+            Vertex: 147, 077
+            Vertex: 145, 078
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 193, 110
+            Vertex: 202, 117
+            Vertex: 200, 110
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 195, 121
+            Vertex: 201, 119
+            Vertex: 183, 119
+            Vertex: 178, 121
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 178, 121
+            Vertex: 183, 119
+            Vertex: 174, 079
+            Vertex: 170, 082
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 169, 095
+            Vertex: 158, 095
+            Vertex: 161, 099
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 156, 102
+            Vertex: 159, 099
+            Vertex: 158, 095
+            Vertex: 155, 095
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 159, 102
+            Vertex: 161, 099
+            Vertex: 159, 099
+            Vertex: 156, 102
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 161, 099
+            Vertex: 158, 095
+            Vertex: 159, 099
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 156, 113
+            Vertex: 160, 111
+            Vertex: 159, 102
+            Vertex: 155, 104
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 186, 084
+            Vertex: 177, 078
+            Vertex: 186, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 188, 093
+            Vertex: 186, 084
+            Vertex: 186, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 190, 099
+            Vertex: 188, 093
+            Vertex: 186, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 193, 110
+            Vertex: 190, 099
+            Vertex: 186, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 193, 110
+            Vertex: 186, 117
+            Vertex: 202, 117
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 201, 119
+            Vertex: 202, 117
+            Vertex: 186, 117
+            Vertex: 183, 119
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 183, 119
+            Vertex: 186, 117
+            Vertex: 177, 078
+            Vertex: 174, 079
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 118, 094
+            Vertex: 120, 091
+            Vertex: 122, 075
+            Vertex: 121, 079
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 162, 121
+            Vertex: 165, 119
+            Vertex: 164, 116
+            Vertex: 160, 118
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 168, 121
+            Vertex: 172, 119
+            Vertex: 165, 119
+            Vertex: 162, 121
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 142, 113
+            Vertex: 145, 110
+            Vertex: 142, 082
+            Vertex: 139, 086
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 173, 117
+            Vertex: 169, 095
+            Vertex: 161, 099
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 160, 111
+            Vertex: 163, 111
+            Vertex: 161, 099
+            Vertex: 159, 102
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 166, 113
+            Vertex: 161, 099
+            Vertex: 163, 111
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 168, 117
+            Vertex: 173, 117
+            Vertex: 161, 099
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 166, 113
+            Vertex: 168, 117
+            Vertex: 161, 099
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 165, 119
+            Vertex: 168, 117
+            Vertex: 166, 113
+            Vertex: 164, 116
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 172, 119
+            Vertex: 173, 117
+            Vertex: 168, 117
+            Vertex: 165, 119
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 158, 111
+            Vertex: 153, 080
+            Vertex: 144, 080
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 147, 120
+            Vertex: 151, 118
+            Vertex: 145, 110
+            Vertex: 142, 113
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 156, 122
+            Vertex: 160, 120
+            Vertex: 151, 118
+            Vertex: 147, 120
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 158, 111
+            Vertex: 144, 080
+            Vertex: 147, 108
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 145, 110
+            Vertex: 147, 108
+            Vertex: 144, 080
+            Vertex: 142, 082
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 162, 118
+            Vertex: 166, 113
+            Vertex: 163, 111
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 162, 118
+            Vertex: 163, 111
+            Vertex: 158, 111
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 164, 116
+            Vertex: 166, 113
+            Vertex: 162, 118
+            Vertex: 160, 120
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 113, 104
+            Vertex: 114, 101
+            Vertex: 105, 073
+            Vertex: 104, 078
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 081, 076
+            Vertex: 080, 071
+            Vertex: 082, 083
+            Vertex: 082, 087
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 120, 091
+            Vertex: 120, 095
+            Vertex: 124, 074
+            Vertex: 122, 075
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 116, 074
+            Vertex: 116, 073
+            Vertex: 120, 095
+            Vertex: 120, 091
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 122, 120
+            Vertex: 118, 120
+            Vertex: 113, 121
+            Vertex: 125, 121
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 120, 119
+            Vertex: 119, 119
+            Vertex: 118, 120
+            Vertex: 122, 120
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 126, 100
+            Vertex: 124, 074
+            Vertex: 120, 095
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 133, 076
+            Vertex: 132, 074
+            Vertex: 126, 100
+            Vertex: 126, 102
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 124, 074
+            Vertex: 126, 100
+            Vertex: 132, 074
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 153, 116
+            Vertex: 162, 118
+            Vertex: 158, 111
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 153, 116
+            Vertex: 158, 111
+            Vertex: 147, 108
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 151, 118
+            Vertex: 153, 116
+            Vertex: 147, 108
+            Vertex: 145, 110
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 160, 120
+            Vertex: 162, 118
+            Vertex: 153, 116
+            Vertex: 151, 118
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 096, 077
+            Vertex: 096, 073
+            Vertex: 091, 091
+            Vertex: 091, 095
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 120, 095
+            Vertex: 116, 073
+            Vertex: 116, 099
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 116, 099
+            Vertex: 126, 100
+            Vertex: 120, 095
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 114, 101
+            Vertex: 116, 099
+            Vertex: 107, 072
+            Vertex: 105, 073
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 116, 099
+            Vertex: 116, 073
+            Vertex: 107, 072
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 122, 119
+            Vertex: 122, 120
+            Vertex: 125, 121
+            Vertex: 127, 119
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 096, 073
+            Vertex: 095, 071
+            Vertex: 089, 089
+            Vertex: 091, 091
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 086, 070
+            Vertex: 089, 089
+            Vertex: 095, 071
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 089, 089
+            Vertex: 086, 070
+            Vertex: 081, 087
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 082, 083
+            Vertex: 081, 087
+            Vertex: 086, 070
+            Vertex: 086, 072
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 080, 071
+            Vertex: 078, 070
+            Vertex: 081, 087
+            Vertex: 082, 083
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 113, 121
+            Vertex: 114, 119
+            Vertex: 114, 101
+            Vertex: 113, 104
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 118, 120
+            Vertex: 118, 119
+            Vertex: 114, 119
+            Vertex: 113, 121
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 042, 080
+            Vertex: 039, 076
+            Vertex: 035, 075
+            Vertex: 038, 080
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 080, 091
+            Vertex: 089, 089
+            Vertex: 081, 087
+        Polygon
+          ColorIndex: 8
+          Vertices  : 4
+            Vertex: 048, 070
+            Vertex: 046, 068
+            Vertex: 051, 076
+            Vertex: 054, 078
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 081, 087
+            Vertex: 078, 070
+            Vertex: 070, 088
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 080, 091
+            Vertex: 081, 087
+            Vertex: 070, 088
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 069, 090
+            Vertex: 070, 088
+            Vertex: 068, 069
+            Vertex: 067, 070
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 070, 088
+            Vertex: 078, 070
+            Vertex: 068, 069
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 116, 099
+            Vertex: 116, 116
+            Vertex: 126, 100
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 114, 119
+            Vertex: 116, 116
+            Vertex: 116, 099
+            Vertex: 114, 101
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 127, 119
+            Vertex: 126, 117
+            Vertex: 116, 116
+            Vertex: 114, 119
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 126, 100
+            Vertex: 116, 116
+            Vertex: 126, 117
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 038, 072
+            Vertex: 051, 076
+            Vertex: 046, 068
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 038, 072
+            Vertex: 046, 068
+            Vertex: 037, 065
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 032, 072
+            Vertex: 038, 072
+            Vertex: 037, 065
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 032, 072
+            Vertex: 037, 065
+            Vertex: 026, 066
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 039, 076
+            Vertex: 038, 072
+            Vertex: 032, 072
+            Vertex: 035, 075
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 097, 121
+            Vertex: 097, 119
+            Vertex: 083, 119
+            Vertex: 084, 121
+        Polygon
+          ColorIndex: 6
+          Vertices  : 4
+            Vertex: 091, 091
+            Vertex: 089, 089
+            Vertex: 095, 116
+            Vertex: 097, 119
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 081, 103
+            Vertex: 080, 100
+            Vertex: 075, 119
+            Vertex: 077, 121
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 017, 073
+            Vertex: 032, 072
+            Vertex: 026, 066
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 056, 082
+            Vertex: 054, 078
+            Vertex: 048, 108
+            Vertex: 051, 111
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 080, 091
+            Vertex: 084, 116
+            Vertex: 089, 089
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 083, 119
+            Vertex: 084, 116
+            Vertex: 080, 091
+            Vertex: 080, 100
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 097, 119
+            Vertex: 095, 116
+            Vertex: 084, 116
+            Vertex: 083, 119
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 089, 089
+            Vertex: 084, 116
+            Vertex: 095, 116
+        Polygon
+          ColorIndex: 7
+          Vertices  : 4
+            Vertex: 077, 121
+            Vertex: 075, 119
+            Vertex: 060, 119
+            Vertex: 062, 121
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 070, 088
+            Vertex: 073, 116
+            Vertex: 080, 091
+        Polygon
+          ColorIndex: 6
+          Vertices  : 4
+            Vertex: 080, 100
+            Vertex: 080, 091
+            Vertex: 073, 116
+            Vertex: 075, 119
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 054, 078
+            Vertex: 051, 076
+            Vertex: 045, 106
+            Vertex: 048, 108
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 038, 080
+            Vertex: 035, 075
+            Vertex: 026, 109
+            Vertex: 030, 112
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 060, 119
+            Vertex: 061, 116
+            Vertex: 070, 088
+            Vertex: 069, 090
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 075, 119
+            Vertex: 073, 116
+            Vertex: 061, 116
+            Vertex: 060, 119
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 073, 116
+            Vertex: 070, 088
+            Vertex: 061, 116
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 051, 111
+            Vertex: 048, 108
+            Vertex: 038, 118
+            Vertex: 042, 121
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 038, 072
+            Vertex: 030, 108
+            Vertex: 051, 076
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 045, 106
+            Vertex: 051, 076
+            Vertex: 030, 108
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 042, 121
+            Vertex: 038, 118
+            Vertex: 025, 120
+            Vertex: 030, 123
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 036, 116
+            Vertex: 045, 106
+            Vertex: 030, 108
+        Polygon
+          ColorIndex: 6
+          Vertices  : 4
+            Vertex: 048, 108
+            Vertex: 045, 106
+            Vertex: 036, 116
+            Vertex: 038, 118
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 017, 073
+            Vertex: 022, 108
+            Vertex: 032, 072
+        Polygon
+          ColorIndex: 5
+          Vertices  : 4
+            Vertex: 035, 075
+            Vertex: 032, 072
+            Vertex: 022, 108
+            Vertex: 026, 109
+        Polygon
+          ColorIndex: 4
+          Vertices  : 4
+            Vertex: 030, 123
+            Vertex: 025, 120
+            Vertex: 012, 118
+            Vertex: 018, 121
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 017, 073
+            Vertex: 006, 105
+            Vertex: 022, 108
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 023, 117
+            Vertex: 036, 116
+            Vertex: 030, 108
+        Polygon
+          ColorIndex: 3
+          Vertices  : 4
+            Vertex: 038, 118
+            Vertex: 036, 116
+            Vertex: 023, 117
+            Vertex: 025, 120
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 010, 116
+            Vertex: 023, 117
+            Vertex: 030, 108
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 010, 116
+            Vertex: 030, 108
+            Vertex: 022, 108
+        Polygon
+          ColorIndex: 2
+          Vertices  : 3
+            Vertex: 006, 105
+            Vertex: 010, 116
+            Vertex: 022, 108
+        Polygon
+          ColorIndex: 1
+          Vertices  : 4
+            Vertex: 025, 120
+            Vertex: 023, 117
+            Vertex: 010, 116
+            Vertex: 012, 118

@@ -50,6 +50,13 @@ module IndentedOutput =
 
   let ilinef fmt = kprintf iline fmt
 
+  let inline iiter
+    (vs                    : 'T seq                     )
+    ([<InlineIfLambda>] uf : 'T -> unit IndentedOutput  ) 
+    : unit IndentedOutput = fun ctx sw i ->
+    for v in vs do
+        uf v ctx sw i
+
   type IndentedOutputBuilder () =
     class
       member inline x.Bind  ( [<InlineIfLambda>] t  : _ IndentedOutput
@@ -66,8 +73,7 @@ module IndentedOutput =
       member inline x.For     ( vs                    : 'T seq
                               , [<InlineIfLambda>] uf : 'T -> unit IndentedOutput
                               ) : unit IndentedOutput =  fun ctx sw i ->
-        for v in vs do
-          uf v ctx sw i
+        iiter vs uf ctx sw i
 
       member inline x.Return  ( v : 'T
                               ) : 'T IndentedOutput =
@@ -134,12 +140,36 @@ module BinaryReader =
       idx <- idx + 1
     vs, ii
 
-  type PrefixAction<'S, 'T, 'U> =
+  type [<Struct>] 'T UntilResult =
+    {
+        Continue  : bool
+        Value     : 'T voption
+    }
+  let inline brepeatUntil
+    ([<InlineIfLambda>] br  : 'T UntilResult BinaryReader )
+    : 'T array BinaryReader = fun bs i ->
+    let vs : 'T ResizeArray = ResizeArray 16
+
+    let mutable ii  = i
+    let mutable cc  = true
+    while cc do
+      let nv, ni = br bs ii
+      match nv.Value with
+      | ValueNone     ->
+        ()
+      | ValueSome nv  ->
+        vs.Add nv
+      //cc <- nv.Continue
+      cc <- false
+      ii  <- ni
+    vs.ToArray (), ii
+
+  type PrefixResult<'S, 'T, 'U> =
     | Continue  of  'S
     | Stop      of  ('T -> 'U)
 
-  let inline brepeatPrefix 
-    ([<InlineIfLambda>] t   : PrefixAction<'S, 'T array, 'U> BinaryReader )
+  let inline brepeatPrefixed
+    ([<InlineIfLambda>] t   : PrefixResult<'S, 'T array, 'U> BinaryReader )
     ([<InlineIfLambda>] uf  : 'S -> 'T BinaryReader                       )
     : 'U BinaryReader = fun bs i ->
     let vs : 'T ResizeArray = ResizeArray 16
@@ -183,18 +213,41 @@ module BinaryReader =
     end
   let breader = BinaryReaderBuilder()
 
-type [<Struct>] RGB         = RGB         of byte*byte*byte
-type [<Struct>] Vertex2D    = Vertex2D    of byte*byte
-type [<Struct>] ColorIndex  = ColorIndex  of byte
-type [<Struct>] PaletteItem = PaletteItem of ColorIndex*RGB
-type [<Struct>] Polygon     = Polygon     of ColorIndex*Vertex2D array
+type [<Struct>] RGB         =
+    {
+        Red     : byte
+        Green   : byte
+        Blue    : byte
+    }
+type [<Struct>] Vertex2D    =
+    {
+        X   : byte
+        Y   : byte
+    }
+type [<Struct>] ColorIndex  = 
+    {
+        Index   : byte
+    }
+type [<Struct>] PaletteItem = 
+    {
+        ColorIndex  : ColorIndex
+        Color       : RGB
+    }
+type [<Struct>] Polygon     = 
+    {
+        ColorIndex  : ColorIndex
+        Vertices    : Vertex2D array
+    }
 type [<Struct>] Frame =
   {
     ClearScreen   : bool
     PaletteDelta  : PaletteItem array
     Polygons      : Polygon array
   }
-
+type [<Struct>] Scene =
+  {
+    Frames        : Frame array
+  }
 type 'T ReadResult =
   | Next      of 'T
   | NextPage  of 'T
@@ -223,7 +276,7 @@ module FrameReader =
         let c     = c + ((cp >>> 3) &&& 0x1)
         byte c
 
-      return RGB (cp 8, cp 4, cp 0)
+      return { Red = cp 8; Green = cp 4; Blue = cp 0 }
     }
 
   let bpaletteDelta : PaletteItem array BinaryReader =
@@ -238,7 +291,7 @@ module FrameReader =
         if bitmask <> 0u then
           let i = 
             if (bitmask &&& 0x1u) <> 0u then
-              pds.[i] <- PaletteItem (ColorIndex j, rgbs.[i])
+              pds.[i] <- { ColorIndex = { Index = j }; Color = rgbs.[i] }
               i + 1
             else
               i
@@ -255,7 +308,7 @@ module FrameReader =
     breader {
       let! x = bbyte ()
       let! y = bbyte ()
-      return Vertex2D (x,y)
+      return { X = x; Y = y }
     }
   let bvertices c = brepeat c (bvertex ())
 
@@ -271,16 +324,16 @@ module FrameReader =
           let ci = (pd >>> 4) &&& 0xFuy
           let vc = pd &&& 0xFuy
           let vc = vc
-          Continue (ColorIndex ci, vc)
+          Continue ({ Index = ci }, vc)
     }
 
   let bpolygon =
-    brepeatPrefix 
+    brepeatPrefixed 
       (bpolygonDescriptor ())
       (fun (ci, vc) -> 
         breader {
           let! vs = bvertices (int vc)
-          return Polygon (ci, vs)
+          return { ColorIndex = ci; Vertices = vs }
         }
       )
 
@@ -297,12 +350,12 @@ module FrameReader =
       let! vc = bbyte ()
       let! vs = bvertices (int vc)
       return!
-        brepeatPrefix 
+        brepeatPrefixed 
           (bpolygonDescriptor ())
           (fun (ci, vc) -> 
             breader {
               let! vs = bindexedVertices vs (int vc)
-              return Polygon (ci, vs)
+              return { ColorIndex = ci; Vertices = vs }
             }
           )
     }
@@ -316,7 +369,7 @@ module FrameReader =
       do! bsetPos pos
     }
 
-  let bframe : Frame ReadResult BinaryReader =
+  let bframe : Frame UntilResult BinaryReader =
     breader {
       let! flags        = bbyte ()
       let clearScreen   = (flags &&& 0x1uy) <> 0uy
@@ -324,40 +377,60 @@ module FrameReader =
       let indexedMode   = (flags &&& 0x4uy) <> 0uy
       let! paletteDelta = if hasPalette then bpaletteDelta else bvalue [||]
       let! polygons     = if indexedMode then bindexedPolygon else bpolygon
-      let mapper ps =
+      let ps, nf, c =
+        match polygons with
+        | Next      ps -> ps, false, true
+        | NextPage  ps -> ps, true , true
+        | Done      ps -> ps, false, false
+      let frame = 
         {
           ClearScreen   = clearScreen
           PaletteDelta  = paletteDelta
           Polygons      = ps
         }
-      return polygons.Map mapper
+      do! if nf then bnextPage () else bvalue ()
+
+      return
+        {
+          Continue = c
+          Value    = ValueSome frame
+        }
+    }
+  let bscene : Scene BinaryReader =
+    breader {
+      let! frames = brepeatUntil bframe
+      return { Frames = frames }
     }
 
 open IndentedOutput
-let iwritePaletteDelta (pd : PaletteItem array) =
+
+let iwritePaletteItem (pi : PaletteItem) =
   ioutput {
-    for pi in pd do
-      let (PaletteItem (ColorIndex ci, RGB (r, g, b))) = pi
-      do! ilinef "ColorIndex: %d" ci
-      do! ilinef "RGB       : %x%x%x" r g b
+    do! iline "PaletteItem" 
+    do! iindent 
+            (ioutput {
+              let c = pi.Color
+              do! ilinef "ColorIndex: %d" pi.ColorIndex.Index
+              do! ilinef "RGB       : %x%x%x" c.Red c.Green c.Blue
+            })
   }
 
-let iwriteVertices (vs: Vertex2D array) =
+let iwriteVertex (v: Vertex2D) =
   ioutput {
-    for v in vs do
-      let (Vertex2D (x, y)) = v
-      do! ilinef "X: %d" x
-      do! ilinef "Y: %d" y
+    do! ilinef "Vertex: %03d, %03d" v.X v.Y
   }
 
-let iwritePolygons (ps: Polygon array) =
+let iwritePolygon (p: Polygon) =
   ioutput {
-    for p in ps do
-      let (Polygon (ColorIndex ci, vs)) = p
-      do! ilinef "ColorIndex: %d" ci
-      do! ilinef "Vertices  : %d" vs.Length
-      do! iindent (iwriteVertices vs)
+    do! iline "Polygon" 
+    do! iindent 
+            (ioutput {
+                do! ilinef "ColorIndex: %d" p.ColorIndex.Index
+                do! ilinef "Vertices  : %d" p.Vertices.Length
+                do! iindent (iiter p.Vertices iwriteVertex)
+            })
   }
+
 let iwriteFrame (f : Frame) =
   ioutput {
     do! iline "Frame"
@@ -365,20 +438,19 @@ let iwriteFrame (f : Frame) =
           (ioutput {
             do! ilinef "ClearScreen : %A" f.ClearScreen
             do! ilinef "PaletteDelta: %d" f.PaletteDelta.Length
-            do! iindent (iwritePaletteDelta f.PaletteDelta)
+            do! iindent (iiter f.PaletteDelta iwritePaletteItem)
             do! ilinef "Polygons    : %d" f.Polygons.Length
-            do! iindent (iwritePolygons f.Polygons)
+            do! iindent (iiter f.Polygons iwritePolygon)
           })
   }
-let iwriteFrameReadResult (fr : Frame ReadResult) =
+let iwriteScene (s : Scene) =
   ioutput {
-    let msg, f = 
-      match fr with
-      | Next      f -> "Next"     , f
-      | NextPage  f -> "NextPage" , f
-      | Done      f -> "Done"     , f
-    do! ilinef "Frame ReadResult: %s" msg
-    do! iindent (iwriteFrame f)
+    do! iline "Scene"
+    do! iindent
+          (ioutput {
+            do! ilinef "Frames: %d" s.Frames.Length
+            do! iindent (iiter s.Frames iwriteFrame)
+          })
   }
 
 let go () =
@@ -390,11 +462,11 @@ let go () =
   let bs = File.ReadAllBytes input
 
   hilif "Parsing scene: %s" input
-  let result = BinaryReader.brun FrameReader.bframe bs
+  let result = BinaryReader.brun FrameReader.bscene bs
 
   hilif "Writing scene: %s" output
   use sw = File.CreateText output
-  irun 2 sw (iwriteFrameReadResult result)
+  irun 2 sw (iwriteScene result)
 
   ()
 
@@ -405,5 +477,5 @@ let main args =
     0
   with
   | e -> 
-    printfn "%s" ""
+    failf "Caught exception: %s\n%s" e.Message (e.ToString())
     99
