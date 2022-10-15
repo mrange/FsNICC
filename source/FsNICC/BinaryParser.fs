@@ -1,5 +1,5 @@
 ﻿module BinaryParser
-open  Log
+open Log
 
 type 'T BinaryReader = byte array -> int -> 'T*int
 module BinaryReader =
@@ -58,8 +58,8 @@ module BinaryReader =
 
   type [<Struct>] 'T UntilResult =
     {
-        Continue  : bool
-        Value     : 'T voption
+      Continue  : bool
+      Value     : 'T voption
     }
   let inline brepeatUntil
     ([<InlineIfLambda>] br  : 'T UntilResult BinaryReader )
@@ -128,4 +128,3 @@ module BinaryReader =
         br
     end
   let breader = BinaryReaderBuilder()
-

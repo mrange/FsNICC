@@ -6,30 +6,30 @@ open IndentedStreamWriter
 open BinaryParser
 
 type [<Struct>] RGB         =
-    {
-        Red     : byte
-        Green   : byte
-        Blue    : byte
-    }
+  {
+    Red     : byte
+    Green   : byte
+    Blue    : byte
+  }
 type [<Struct>] Vertex2D    =
-    {
-        X   : byte
-        Y   : byte
-    }
+  {
+    X   : byte
+    Y   : byte
+  }
 type [<Struct>] ColorIndex  = 
-    {
-        Index   : byte
-    }
+  {
+    Index   : byte
+  }
 type [<Struct>] PaletteItem = 
-    {
-        ColorIndex  : ColorIndex
-        Color       : RGB
-    }
+  {
+    ColorIndex  : ColorIndex
+    Color       : RGB
+  }
 type [<Struct>] Polygon     = 
-    {
-        ColorIndex  : ColorIndex
-        Vertices    : Vertex2D array
-    }
+  {
+    ColorIndex  : ColorIndex
+    Vertices    : Vertex2D array
+  }
 type [<Struct>] Frame =
   {
     ClearScreen   : bool
@@ -58,11 +58,11 @@ module SceneWriter =
     ioutput {
       do! iline "PaletteItem" 
       do! iindent 
-              (ioutput {
-                let c = pi.Color
-                do! ilinef "ColorIndex: %d" pi.ColorIndex.Index
-                do! ilinef "RGB       : %x%x%x" c.Red c.Green c.Blue
-              })
+            (ioutput {
+              let c = pi.Color
+              do! ilinef "ColorIndex: %d" pi.ColorIndex.Index
+              do! ilinef "RGB       : %x%x%x" c.Red c.Green c.Blue
+            })
     }
 
   let iwriteVertex (v: Vertex2D) =
@@ -74,11 +74,11 @@ module SceneWriter =
     ioutput {
       do! iline "Polygon" 
       do! iindent 
-              (ioutput {
-                  do! ilinef "ColorIndex: %d" p.ColorIndex.Index
-                  do! ilinef "Vertices  : %d" p.Vertices.Length
-                  do! iindent (iiter p.Vertices iwriteVertex)
-              })
+            (ioutput {
+                do! ilinef "ColorIndex: %d" p.ColorIndex.Index
+                do! ilinef "Vertices  : %d" p.Vertices.Length
+                do! iindent (iiter p.Vertices iwriteVertex)
+            })
     }
 
   let iwriteFrame (f : Frame) =
