@@ -9,9 +9,10 @@
     <None Include="..\..\assets\scene1.bin" Link="scene1.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="Log.fs" />
+    <Compile Include="IndentedStreamWriter.fs" />
+    <Compile Include="BinaryParser.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
-  <ItemGroup />
 
 </Project>

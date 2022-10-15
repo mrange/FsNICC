@@ -1,0 +1,67 @@
+﻿module IndentedStreamWriter
+open System
+open System.IO
+open FSharp.Core.Printf
+
+type IndentContext =
+  {
+    IndentBy  : int
+  }
+
+type 'T IndentedOutput = IndentContext -> StreamWriter -> int -> 'T
+module IndentedOutput =
+  let irun indentBy sw (io : 'T IndentedOutput) = 
+    let ctx = {IndentBy = indentBy}
+    io ctx sw 0
+
+  let inline ivalue v : 'T IndentedOutput = fun ctx sw i ->
+    v
+
+  let inline iindent 
+    ([<InlineIfLambda>] io  : 'T IndentedOutput ) 
+    : 'T IndentedOutput = fun ctx sw i ->
+    io ctx sw (i + ctx.IndentBy)
+
+  let iline (msg : string) : unit IndentedOutput = fun ctx sw i ->
+    sw.WriteLine ()
+    if i > 0 then
+      sw.Write (new String (' ', i))
+    sw.Write msg
+
+  let ilinef fmt = kprintf iline fmt
+
+  let inline iiter
+    (vs                    : 'T seq                     )
+    ([<InlineIfLambda>] uf : 'T -> unit IndentedOutput  ) 
+    : unit IndentedOutput = fun ctx sw i ->
+    for v in vs do
+        uf v ctx sw i
+
+  type IndentedOutputBuilder () =
+    class
+      member inline x.Bind  ( [<InlineIfLambda>] t  : _ IndentedOutput
+                            , [<InlineIfLambda>] uf : _ -> _ IndentedOutput
+                            ) : _ IndentedOutput = fun ctx sw i ->
+        uf (t ctx sw i) ctx sw i
+
+      member inline x.Combine ( [<InlineIfLambda>] t : _ IndentedOutput
+                              , [<InlineIfLambda>] u : _ IndentedOutput
+                              ) : _ IndentedOutput =  fun ctx sw i ->
+        t ctx sw i
+        u ctx sw i
+
+      member inline x.For     ( vs                    : 'T seq
+                              , [<InlineIfLambda>] uf : 'T -> unit IndentedOutput
+                              ) : unit IndentedOutput =  fun ctx sw i ->
+        iiter vs uf ctx sw i
+
+      member inline x.Return  ( v : 'T
+                              ) : 'T IndentedOutput =
+        ivalue v
+      member inline x.ReturnFrom  (io : 'T IndentedOutput
+                                  ): 'T IndentedOutput = 
+        io
+    end
+
+  let ioutput = IndentedOutputBuilder ()
+
