@@ -137,13 +137,13 @@ module SceneReader =
       let rec loop bitmask i j (rgbs : _ array) (pds : _ array)=
         if bitmask <> 0u then
           let i = 
-            if (bitmask &&& 0x1u) <> 0u then
+            if (bitmask &&& 0x8000u) <> 0u then
               pds.[i] <- { ColorIndex = { Index = j }; Color = rgbs.[i] }
               i + 1
             else
               i
-          loop (bitmask >>> 1) i (j - 1uy) rgbs pds
-      loop bitmask 0 15uy rgbs pds
+          loop (bitmask <<< 1) i (j + 1uy) rgbs pds
+      loop bitmask 0 0uy rgbs pds
       return pds
     }
 
