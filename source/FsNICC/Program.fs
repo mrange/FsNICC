@@ -1,5 +1,10 @@
 ﻿open System
 open System.IO
+open System.Windows
+open System.Windows.Media
+open System.Windows.Media.Animation
+
+open System.Collections.Generic
 
 open Log
 open IndentedStreamWriter
@@ -244,8 +249,141 @@ module SceneReader =
       return { Frames = frames }
     }
 
+type [<Struct>] WPFPolygon =
+  {
+    Fill  : Brush
+    Path  : PathGeometry
+  }
 
-let go () =
+type [<Struct>] WPFFrame =
+  {
+    Polygons  : WPFPolygon array
+  }
+
+type [<Struct>] WPFScene =
+  {
+    Frames : WPFFrame array
+  }
+
+type SceneElement (scene : WPFScene) =
+  class
+    inherit UIElement ()
+
+    static let timeProperty =
+      let pc = PropertyChangedCallback SceneElement.TimePropertyChanged
+      let md = PropertyMetadata (0., pc)
+      DependencyProperty.Register ("Time", typeof<float>, typeof<SceneElement>, md)
+
+    let freeze (f : #Freezable) = 
+      f.Freeze ()
+      f
+
+    let makePen thickness brush = 
+      Pen (Thickness = thickness, Brush = brush) |> freeze
+
+    let particlePen = makePen 2. Brushes.White
+    let stickPen    = makePen 2. Brushes.Yellow
+    let ropePen     = makePen 2. Brushes.GreenYellow
+
+    static member TimePropertyChanged (d : DependencyObject) (e : DependencyPropertyChangedEventArgs) =
+      let g = d :?> SceneElement
+      g.InvalidateVisual ()
+
+    static member TimeProperty = timeProperty
+
+    member x.Time = x.GetValue SceneElement.TimeProperty :?> float
+
+    member x.Start () =
+      let b   = 0.
+      let e   = 1E9
+      let dur = Duration (TimeSpan.FromSeconds (e - b))
+      let ani = DoubleAnimation (b, e, dur) |> freeze
+      x.BeginAnimation (SceneElement.TimeProperty, ani);
+
+    override x.OnRender dc =
+      let time  = x.Time
+      let rs    = x.RenderSize
+      let c     = Point (rs.Width*0.5, rs.Height*0.5)
+
+      let t     = ScaleTransform (3.0, 3.0)
+      dc.PushTransform t
+      let i     = int (floor (time * 25.0))
+      let i     = i % scene.Frames.Length
+      let f     = scene.Frames.[i]
+      for p in f.Polygons do
+        dc.DrawGeometry (p.Fill, null, p.Path)
+
+      dc.Pop ()
+  end
+
+let toWPFScene (scene : Scene) : WPFScene =
+  let freeze (f : #Freezable) = 
+    f.Freeze ()
+    f
+
+  let frames = scene.Frames
+
+  let palette       : RGB array               = Array.zeroCreate 16
+  let knownBrushes  : Dictionary<RGB, Brush>  = Dictionary<RGB, Brush> ()
+
+  let mapPolygon (f : Polygon) : WPFPolygon =
+    let rgb   = palette.[int f.ColorIndex.Index]
+
+    let brush = knownBrushes.[rgb]
+    let vs    = f.Vertices
+    let pts   = Array.zeroCreate (vs.Length + 1)
+    let rec loop (vs : Vertex2D array) (pts : Point array) i =
+      if i < vs.Length then
+        let v = vs.[i]
+        pts.[i] <- Point (float v.X, float v.Y)
+        loop vs pts (i + 1)
+      else
+        let v = vs.[0]
+        pts.[i] <- Point (float v.X, float v.Y)
+
+    loop vs pts 0
+
+    let pls   = PolyLineSegment (
+        pts
+      , false
+      )
+    let pls   = freeze pls
+
+    let pf    = PathFigure ()
+    pf.Segments.Add pls
+    let pf    = freeze pf
+
+    let pg    = PathGeometry ()
+    pg.Figures.Add pf
+    let pg = freeze pg
+
+    { Fill = brush; Path = pg }
+  let mapFrame (f : Frame) : WPFFrame =
+    for pi in f.PaletteDelta do
+      palette.[int pi.ColorIndex.Index] <- pi.Color
+
+    for color in palette do
+      match knownBrushes.TryGetValue color with
+      | true  , _ -> ()
+      | false , _ ->
+        let c = Color.FromRgb ( color.Red   <<< 4
+                              , color.Green <<< 4
+                              , color.Blue  <<< 4
+                              )
+        let b = SolidColorBrush c
+        let b = freeze b
+        knownBrushes.Add (color, b)
+
+    let polygons = f.Polygons |> Array.map mapPolygon
+
+    { Polygons = polygons }
+
+
+  let wpfFrames = frames |> Array.map mapFrame
+
+  { Frames = wpfFrames }
+
+let run () =
   Environment.CurrentDirectory <- AppDomain.CurrentDomain.BaseDirectory
   let input   = Path.GetFullPath "scene1.bin"
   let output  = Path.GetFullPath "../../../../../assets/scene1.txt"
@@ -254,18 +392,29 @@ let go () =
   let bs = File.ReadAllBytes input
 
   hilif "Parsing scene: %s" input
-  let result = BinaryReader.brun SceneReader.bscene bs
+  let scene = BinaryReader.brun SceneReader.bscene bs
 
   hilif "Writing scene: %s" output
   use sw = File.CreateText output
-  IndentedOutput.irun 2 sw (SceneWriter.iwriteScene result)
+  IndentedOutput.irun 2 sw (SceneWriter.iwriteScene scene)
+
+  hilif "Making WPF Scene with %d frames" scene.Frames.Length
+  let wpfScene = toWPFScene scene
+
+  hili "Launching scene render window"
+  let window  = Window (Title = "FsNICC", Background = Brushes.Black)
+  let element = SceneElement wpfScene
+  window.Content <- element
+  element.Start ()
+  window.ShowDialog () |> ignore
 
   ()
 
 [<EntryPoint>]
+[<STAThread>]
 let main args =
   try
-    go ()
+    run ()
     0
   with
   | e -> 
