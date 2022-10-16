@@ -13,6 +13,8 @@
     <Compile Include="Log.fs" />
     <Compile Include="IndentedStreamWriter.fs" />
     <Compile Include="BinaryParser.fs" />
+    <Compile Include="SceneParser.fs" />
+    <Compile Include="WPFRenderer.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
