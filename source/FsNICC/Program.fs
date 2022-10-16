@@ -303,9 +303,13 @@ type SceneElement (scene : WPFScene) =
     override x.OnRender dc =
       let time  = x.Time
       let rs    = x.RenderSize
-      let c     = Point (rs.Width*0.5, rs.Height*0.5)
 
-      let t     = ScaleTransform (3.0, 3.0)
+      let s     = Math.Min(rs.Width / 256.0, rs.Height/200.0)
+
+      let t     = TransformGroup ()
+      t.Children.Add (TranslateTransform (-128.0, -100.0))
+      t.Children.Add (ScaleTransform (s, s))
+      t.Children.Add (TranslateTransform (rs.Width*0.5, rs.Height*0.5))
       dc.PushTransform t
       let i     = int (floor (time * 25.0))
       let i     = i % scene.Frames.Length
