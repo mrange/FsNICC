@@ -10,15 +10,10 @@ open SceneParser
 
 let run () =
   Environment.CurrentDirectory <- AppDomain.CurrentDomain.BaseDirectory
+
   let input   = Path.GetFullPath "scene1.bin"
-  let output  = Path.GetFullPath "../../../../../assets/scene1.txt"
-
   let bs = File.ReadAllBytes input
-
   let scene = BinaryReader.brun SceneReader.bscene bs
-
-  use sw = File.CreateText output
-  IndentedOutput.irun 2 sw (SceneWriter.iwriteScene scene)
 
   WPFRenderer.renderScene scene
 
