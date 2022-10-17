@@ -1,6 +1,7 @@
 ﻿module WPFRenderer
 open System
 open System.Collections.Generic
+open System.Globalization
 open System.Windows
 open System.Windows.Media
 open System.Windows.Media.Animation
@@ -36,11 +37,20 @@ type SceneElement (scene : WPFScene) =
       let md = PropertyMetadata (0., pc)
       DependencyProperty.Register ("Time", typeof<float>, typeof<SceneElement>, md)
 
+    let formattedText text  = FormattedText (
+        text
+      , CultureInfo.InstalledUICulture
+      , FlowDirection.LeftToRight
+      , Typeface "Courier New"
+      , 32.
+      , Brushes.White
+      )
+
     let translateTransform  = TranslateTransform ()
     let scaleTransform      = ScaleTransform ()
     let fullTransform       = 
       let t     = TransformGroup ()
-      t.Children.Add (TranslateTransform (-128.0, -100.0))
+      t.Children.Add (TranslateTransform (-128., -100.))
       t.Children.Add scaleTransform
       t.Children.Add translateTransform
       t
@@ -64,7 +74,14 @@ type SceneElement (scene : WPFScene) =
       let time  = x.Time
       let rs    = x.RenderSize
 
-      let s     = Math.Min(rs.Width / 256.0, rs.Height/200.0)
+      let s     = min (rs.Width/256.) (rs.Height/200.)
+
+      let i     = int (floor (time * 25.))
+      let fps   = float i/time;
+      let i     = i % scene.Frames.Length
+
+      let ft    = formattedText $"Frame: {i}\nTime : %.2f{time} s\nFPS  : %.2f{fps}"
+      dc.DrawText (ft, Point (0., 0.))
 
       scaleTransform.ScaleX <- s
       scaleTransform.ScaleY <- s
@@ -72,8 +89,6 @@ type SceneElement (scene : WPFScene) =
       translateTransform.Y  <- rs.Height*0.5
       dc.PushTransform fullTransform
 
-      let i     = int (floor (time * 25.0))
-      let i     = i % scene.Frames.Length
       let f     = scene.Frames.[i]
       for p in f.Polygons do
         dc.DrawGeometry (p.Fill, null, p.Path)
@@ -127,9 +142,10 @@ let toWPFScene (scene : Scene) : WPFScene =
       match knownBrushes.TryGetValue color with
       | true  , _ -> ()
       | false , _ ->
-        let c = Color.FromRgb ( color.Red   <<< 4
-                              , color.Green <<< 4
-                              , color.Blue  <<< 4
+        let inline convert v = (v <<< 4) + v 
+        let c = Color.FromRgb ( convert color.Red  
+                              , convert color.Green
+                              , convert color.Blue 
                               )
         let b = SolidColorBrush c
         let b = freeze b
@@ -147,7 +163,7 @@ let toWPFScene (scene : Scene) : WPFScene =
 let renderScene (scene : Scene) =
   let wpfScene = toWPFScene scene
 
-  let window  = Window (Title = "FsNICC", Background = Brushes.Black)
+  let window  = Window (Title = "ST-NICC in F#", Background = Brushes.Black)
   let element = SceneElement wpfScene
   window.Content <- element
   element.Start ()
