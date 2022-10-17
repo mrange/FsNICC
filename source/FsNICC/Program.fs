@@ -1,7 +1,7 @@
 ﻿open System
 open System.IO
+open System.Windows
 
-open Log
 open IndentedStreamWriter
 open BinaryParser
 open SceneParser
@@ -11,13 +11,10 @@ let run () =
   let input   = Path.GetFullPath "scene1.bin"
   let output  = Path.GetFullPath "../../../../../assets/scene1.txt"
 
-  hilif "Reading scene: %s" input
   let bs = File.ReadAllBytes input
 
-  hilif "Parsing scene: %s" input
   let scene = BinaryReader.brun SceneReader.bscene bs
 
-  hilif "Writing scene: %s" output
   use sw = File.CreateText output
   IndentedOutput.irun 2 sw (SceneWriter.iwriteScene scene)
 
@@ -30,6 +27,12 @@ let main args =
     run ()
     0
   with
-  | e -> 
-    failf "Caught exception: %s\n%s" e.Message (e.ToString())
+  | e ->
+    let msg = sprintf "Caught exception: %s" e.Message
+    MessageBox.Show ( msg
+                    , "Application crashed"
+                    , MessageBoxButton.OK
+                    , MessageBoxImage.Error
+                    ) |> ignore
+    
     99

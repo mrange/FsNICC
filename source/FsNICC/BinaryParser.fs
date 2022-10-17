@@ -1,5 +1,5 @@
 ﻿module BinaryParser
-open Log
+open System.Diagnostics
 
 type 'T BinaryReader = byte array -> int -> 'T*int
 module BinaryReader =
@@ -18,9 +18,9 @@ module BinaryReader =
     v
 
   let bdebug nm (br : _ BinaryReader) : _ BinaryReader = fun bs i ->
-    infof "bdebug - BEFORE - %s - %x" nm i
+    Debug.WriteLine (sprintf "bdebug - BEFORE - %s - %x" nm i)
     let bv, bi = br bs i
-    infof "bdebug - AFTER  - %s - %x - %A" nm bi bv
+    Debug.WriteLine (sprintf "bdebug - AFTER  - %s - %x - %A" nm bi bv)
     bv, bi
 
   let inline bvalue v : _ BinaryReader = fun bs i ->
