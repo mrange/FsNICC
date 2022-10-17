@@ -44,6 +44,9 @@ type SceneElement (scene : WPFScene) =
       , Typeface "Courier New"
       , 32.
       , Brushes.White
+      , null
+      , TextFormattingMode.Display
+      , 1.
       )
 
     let translateTransform  = TranslateTransform ()
@@ -76,13 +79,12 @@ type SceneElement (scene : WPFScene) =
 
       let s     = min (rs.Width/256.) (rs.Height/200.)
 
-      let i     = int (floor (time * 25.))
-      let fps   = float i/time;
+      let dfps  = 25.
+      let i     = int (floor (time * dfps))
       let i     = i % scene.Frames.Length
       let f     = scene.Frames.[i]
 
-      let ft    = formattedText $"Frame: {i}\nTime : %.2f{time} s\nFPS  : %.2f{fps}\nPolys: {f.Polygons.Length}"
-      dc.DrawText (ft, Point (0., 0.))
+      let ft    = formattedText $"Frame: {i}\nTime : %.2f{time}s\nPolys: {f.Polygons.Length}"
 
       scaleTransform.ScaleX <- s
       scaleTransform.ScaleY <- s
@@ -94,6 +96,8 @@ type SceneElement (scene : WPFScene) =
         dc.DrawGeometry (p.Fill, null, p.Path)
 
       dc.Pop ()
+
+      dc.DrawText (ft, Point (0., 0.))
   end
 
 let toWPFScene (scene : Scene) : WPFScene =
