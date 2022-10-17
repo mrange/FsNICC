@@ -12,11 +12,11 @@ let run () =
   Environment.CurrentDirectory <- AppDomain.CurrentDomain.BaseDirectory
 
   let input   = Path.GetFullPath "scene1.bin"
-  let bs = File.ReadAllBytes input
-  let scene = BinaryReader.brun SceneReader.bscene bs
+  let bs      = File.ReadAllBytes input
+  let scene   = BinaryReader.brun SceneReader.bscene bs
 
   let output  = Path.GetFullPath "../../../../../assets/scene1.txt"
-  use sw = File.CreateText output
+  use sw      = File.CreateText output
   IndentedOutput.irun 2 sw (SceneWriter.iwriteScene scene)
 
 [<EntryPoint>]

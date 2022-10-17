@@ -19,27 +19,62 @@ open SceneParser
 
 type [<Struct>] SpectrePolygon =
   {
-    Fill  : Color
-    Path  : PointF array
+    Fill        : Color
+    Points      : PointF array
   }
 
 type [<Struct>] SpectreFrame =
   {
-    Polygons  : SpectrePolygon array
+    ClearScreen : bool
+    Polygons    : SpectrePolygon array
   }
 
 type [<Struct>] SpectreScene =
   {
-    Frames : SpectreFrame array
+    Frames      : SpectreFrame array
   }
+
+let toSpectreScene (scene : Scene) : SpectreScene =
+  let inline toColor (rgb : RGB) = 
+    let inline convert c = (c <<< 4) + c
+    Color.FromRgb (convert rgb.Red, convert rgb.Green, convert rgb.Blue)
+
+  let palette = Array.zeroCreate 16
+
+  let mapPolygon (polygon : Polygon) : SpectrePolygon =
+    let points = 
+      polygon.Vertices 
+      |> Array.map (fun v -> PointF (float32 v.X, float32 v.Y))
+    {
+      Fill    = palette.[int polygon.ColorIndex.Index]
+      Points  = points
+    }
+
+  let mapFrame (frame : Frame) : SpectreFrame =
+    for pi in frame.PaletteDelta do
+      palette.[int pi.ColorIndex.Index] <- toColor pi.Color
+    let polygons = 
+      frame.Polygons
+      |> Array.map mapPolygon
+    { 
+      ClearScreen = frame.ClearScreen
+      Polygons    = polygons 
+    }
+
+  let frames = 
+    scene.Frames 
+    |> Array.map mapFrame
+
+  { Frames = frames }
 
 
 let run () =
   Environment.CurrentDirectory <- AppDomain.CurrentDomain.BaseDirectory
 
   let input   = Path.GetFullPath "scene1.bin"
-  let bs = File.ReadAllBytes input
-  let scene = BinaryReader.brun SceneReader.bscene bs
+  let bs      = File.ReadAllBytes input
+  let scene   = BinaryReader.brun SceneReader.bscene bs
+  let sscene  = toSpectreScene scene
 
   let w = 256
   let h = 200
@@ -47,24 +82,14 @@ let run () =
   let canvas = Canvas (w, h)
 
   let updater (ctx : LiveDisplayContext) =
-    let palette = Array.zeroCreate 16
     use image = new Image<Rgb24> (w, h)
-    for frame = 0 to scene.Frames.Length - 1 do
-      let inline toColor (rgb : RGB) = 
-        let inline convert c = (c <<< 4) + c
-        Color.FromRgb (convert rgb.Red, convert rgb.Green, convert rgb.Blue)
-
+    for frame = 0 to sscene.Frames.Length - 1 do
       let filler (ctx : IImageProcessingContext) =
-        let f = scene.Frames.[frame]
+        let f = sscene.Frames.[frame]
         if f.ClearScreen then
-          ctx.Fill (toColor palette.[0]) |> ignore
-        for pi in f.PaletteDelta do
-          palette.[int pi.ColorIndex.Index] <- pi.Color
+          ctx.Clear (Color ()) |> ignore
         for p in f.Polygons do
-          let ps = 
-            p.Vertices 
-            |> Array.map (fun v -> PointF (float32 v.X, float32 v.Y))
-          ctx.FillPolygon (toColor palette.[int p.ColorIndex.Index], ps) |> ignore
+          ctx.FillPolygon (p.Fill, p.Points) |> ignore
       image.Mutate filler
 
       for y = 0 to h - 1 do

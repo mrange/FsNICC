@@ -12,8 +12,8 @@ let run () =
   Environment.CurrentDirectory <- AppDomain.CurrentDomain.BaseDirectory
 
   let input   = Path.GetFullPath "scene1.bin"
-  let bs = File.ReadAllBytes input
-  let scene = BinaryReader.brun SceneReader.bscene bs
+  let bs      = File.ReadAllBytes input
+  let scene   = BinaryReader.brun SceneReader.bscene bs
 
   WPFRenderer.renderScene scene
 
