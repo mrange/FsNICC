@@ -1,4 +1,4 @@
-﻿module BinaryParser
+﻿module FsNICC.BinaryParser
 open System.Diagnostics
 
 type 'T BinaryReader = byte array -> int -> 'T*int

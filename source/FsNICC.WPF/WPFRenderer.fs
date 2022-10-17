@@ -1,4 +1,4 @@
-﻿module WPFRenderer
+﻿module FsNICC.WPF.WPFRenderer
 open System
 open System.Collections.Generic
 open System.Globalization
@@ -6,6 +6,7 @@ open System.Windows
 open System.Windows.Media
 open System.Windows.Media.Animation
 
+open FsNICC
 open SceneParser
 
 type [<Struct>] WPFPolygon =

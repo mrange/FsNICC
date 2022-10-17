@@ -1,4 +1,4 @@
-﻿module IndentedStreamWriter
+﻿module FsNICC.IndentedStreamWriter
 open System
 open System.IO
 open FSharp.Core.Printf

@@ -1,7 +1,9 @@
-﻿open System
+﻿module FsNICC.WPF.Program
+open System
 open System.IO
 open System.Windows
 
+open FsNICC
 open IndentedStreamWriter
 open BinaryParser
 open SceneParser
