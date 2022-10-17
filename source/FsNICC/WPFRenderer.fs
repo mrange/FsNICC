@@ -79,8 +79,9 @@ type SceneElement (scene : WPFScene) =
       let i     = int (floor (time * 25.))
       let fps   = float i/time;
       let i     = i % scene.Frames.Length
+      let f     = scene.Frames.[i]
 
-      let ft    = formattedText $"Frame: {i}\nTime : %.2f{time} s\nFPS  : %.2f{fps}"
+      let ft    = formattedText $"Frame: {i}\nTime : %.2f{time} s\nFPS  : %.2f{fps}\nPolys: {f.Polygons.Length}"
       dc.DrawText (ft, Point (0., 0.))
 
       scaleTransform.ScaleX <- s
@@ -89,7 +90,6 @@ type SceneElement (scene : WPFScene) =
       translateTransform.Y  <- rs.Height*0.5
       dc.PushTransform fullTransform
 
-      let f     = scene.Frames.[i]
       for p in f.Polygons do
         dc.DrawGeometry (p.Fill, null, p.Path)
 
