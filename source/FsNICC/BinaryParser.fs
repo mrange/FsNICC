@@ -1,7 +1,7 @@
 ﻿module FsNICC.BinaryParser
 open System.Diagnostics
 
-type 'T BinaryReader = byte array -> int -> 'T*int
+type 'T BinaryReader = byte array -> int -> struct ('T*int)
 module BinaryReader =
   let popCount (i : uint32) : uint32 =
     // From: http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
@@ -14,32 +14,32 @@ module BinaryReader =
     ((v + (v >>> 4) &&& 0xF0F0F0Fu) * 0x1010101u) >>> 24
 
   let brun (br : 'T BinaryReader) bs : 'T = 
-    let v, _ = br bs 0
+    let struct (v, _) = br bs 0
     v
 
   let bdebug nm (br : _ BinaryReader) : _ BinaryReader = fun bs i ->
     Debug.WriteLine (sprintf "bdebug - BEFORE - %s - %x" nm i)
-    let bv, bi = br bs i
+    let struct (bv, bi) = br bs i
     Debug.WriteLine (sprintf "bdebug - AFTER  - %s - %x - %A" nm bi bv)
-    bv, bi
+    struct (bv, bi)
 
   let inline bvalue v : _ BinaryReader = fun bs i ->
-    v, i
+    struct (v, i)
 
   let inline bgetPos () : int BinaryReader = fun bs i ->
-    i, i
+    struct (i, i)
 
   let inline bsetPos pos : unit BinaryReader = fun bs i ->
-    (), pos
+    struct ((), pos)
 
   let inline bbyte () : uint8 BinaryReader = fun bs i ->
-    bs.[i], i + 1
+    struct (bs.[i], i + 1)
 
   let inline bword () : uint16 BinaryReader = fun bs i ->
     let word = 
         ((uint16 bs.[i]) <<< 8) 
       + (uint16 bs.[i +  1])
-    word, i + 2
+    struct (word, i + 2)
 
   let inline brepeat 
     (count                  : int             )
@@ -50,11 +50,11 @@ module BinaryReader =
     let mutable ii  = i
     let mutable idx = 0
     while idx < count do
-      let nv, ni = br bs ii
+      let struct (nv, ni) = br bs ii
       vs.[idx] <- nv
       ii  <- ni
       idx <- idx + 1
-    vs, ii
+    struct (vs, ii)
 
   type [<Struct>] 'T UntilResult =
     {
@@ -69,7 +69,7 @@ module BinaryReader =
     let mutable ii  = i
     let mutable cc  = true
     while cc do
-      let nv, ni = br bs ii
+      let struct (nv, ni) = br bs ii
       match nv.Value with
       | ValueNone     ->
         ()
@@ -78,7 +78,7 @@ module BinaryReader =
       cc <- nv.Continue
       //cc <- false
       ii  <- ni
-    vs.ToArray (), ii
+    struct (vs.ToArray (), ii)
 
   type PrefixResult<'S, 'T, 'U> =
     | Continue  of  'S
@@ -94,31 +94,44 @@ module BinaryReader =
     let mutable cc  = true
     let mutable ii  = i
     while cc do
-      let tv, ti = t bs ii
+      let struct (tv, ti) = t bs ii
       match tv with
       | Continue  sv ->
-        let uv, ui = uf sv bs ti
+        let struct (uv, ui) = uf sv bs ti
         vs.Add uv
         ii <- ui
       | Stop      sf ->
         rr <- sf (vs.ToArray ())
         cc <- false
         ii <- ti
-    rr, ii
+    struct (rr, ii)
 
   type BinaryReaderBuilder () =
     class
       member inline x.Bind  ( [<InlineIfLambda>] t  : _ BinaryReader
                             , [<InlineIfLambda>] uf : _ -> _ BinaryReader
                             ) : _ BinaryReader = fun bs i ->
-        let tv, ti = t bs i
+        let struct (tv, ti) = t bs i
         uf tv bs ti
 
       member inline x.Combine ( [<InlineIfLambda>] t : _ BinaryReader
                               , [<InlineIfLambda>] u : _ BinaryReader
                               ) : _ BinaryReader =  fun bs i ->
-        let _, ti = t bs i
+        let struct (_, ti) = t bs i
         u bs ti
+
+      member inline x.MergeSources  ( [<InlineIfLambda>] t : _ BinaryReader
+                                    , [<InlineIfLambda>] u : _ BinaryReader
+                                    ) : _ BinaryReader =  fun bs i ->
+        let struct (tv, ti) = t bs i
+        let struct (uv, ui) = u bs ti
+        struct (struct (tv, uv), ui)
+
+      member inline x.BindReturn    ( [<InlineIfLambda>] t : _ BinaryReader
+                                    , [<InlineIfLambda>] f
+                                    ) : _ BinaryReader =  fun bs i ->
+        let struct (tv, ti) = t bs i
+        struct (f tv, ti)
 
       member inline x.Return  ( v : 'T
                               ) : 'T BinaryReader =

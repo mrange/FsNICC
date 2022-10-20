@@ -106,9 +106,8 @@ module SceneReader =
 
   let inline brgb () =
     breader {
-      let! c = bword ()
-      let c = int c
-      let inline cp i = 
+      let inline cp c i = 
+        let c = int c
         let cp    = (c >>> i) &&& 0xF
         // Atari ST color
         let c     = (cp &&& 0x7) <<< 1
@@ -116,7 +115,8 @@ module SceneReader =
         let c     = c + ((cp >>> 3) &&& 0x1)
         byte c
 
-      return { Red = cp 8; Green = cp 4; Blue = cp 0 }
+      let! c = bword ()
+      return { Red = cp c 8; Green = cp c 4; Blue = cp c 0 }
     }
 
   let bpaletteDelta : PaletteItem array BinaryReader =
@@ -147,7 +147,7 @@ module SceneReader =
   let inline bvertex () =
     breader {
       let! x = bbyte ()
-      let! y = bbyte ()
+      and! y = bbyte ()
       return { X = x; Y = y }
     }
   let bvertices c = brepeat c (bvertex ())
@@ -241,6 +241,3 @@ module SceneReader =
       let! frames = brepeatUntil bframe
       return { Frames = frames }
     }
-
-
-

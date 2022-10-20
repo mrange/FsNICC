@@ -50,6 +50,19 @@ module IndentedOutput =
         t ctx sw i
         u ctx sw i
 
+      member inline x.MergeSources  ( [<InlineIfLambda>] t : _ IndentedOutput
+                                    , [<InlineIfLambda>] u : _ IndentedOutput
+                              ) : _ IndentedOutput =  fun ctx sw i ->
+        let tv = t ctx sw i
+        let uv = u ctx sw i
+        struct (tv, uv)
+
+      member inline x.BindReturn    ( [<InlineIfLambda>] t : _ IndentedOutput
+                                    , [<InlineIfLambda>] f
+                              ) : _ IndentedOutput =  fun ctx sw i ->
+        let tv = t ctx sw i
+        f tv
+
       member inline x.For     ( vs                    : 'T seq
                               , [<InlineIfLambda>] uf : 'T -> unit IndentedOutput
                               ) : unit IndentedOutput =  fun ctx sw i ->
