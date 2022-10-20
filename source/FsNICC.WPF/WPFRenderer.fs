@@ -11,8 +11,9 @@ open SceneParser
 
 type [<Struct>] WPFPolygon =
   {
-    Fill  : Brush
-    Path  : PathGeometry
+    Fill      : Brush
+    IsConvex  : bool
+    Path      : PathGeometry
   }
 
 type [<Struct>] WPFFrame =
@@ -138,7 +139,7 @@ let toWPFScene (scene : Scene) : WPFScene =
     pg.Figures.Add pf
     let pg = freeze pg
 
-    { Fill = brush; Path = pg }
+    { Fill = brush; IsConvex = f.IsConvex; Path = pg }
   let mapFrame (f : Frame) : WPFFrame =
     for pi in f.PaletteDelta do
       palette.[int pi.ColorIndex.Index] <- pi.Color
@@ -156,7 +157,10 @@ let toWPFScene (scene : Scene) : WPFScene =
         let b = freeze b
         knownBrushes.Add (color, b)
 
-    let polygons = f.Polygons |> Array.map mapPolygon
+    let polygons = 
+      f.Polygons 
+      //|> Array.filter (fun p -> p.IsConvex)
+      |> Array.map mapPolygon
 
     { Polygons = polygons }
 
