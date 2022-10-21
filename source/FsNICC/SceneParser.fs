@@ -3,6 +3,8 @@
 open IndentedStreamWriter
 open BinaryParser
 
+open System.Numerics
+
 type [<Struct>] RGB         =
   {
     Red     : byte
@@ -26,6 +28,7 @@ type [<Struct>] PaletteItem =
 type [<Struct>] Polygon     = 
   {
     ColorIndex  : ColorIndex
+    IsConvex    : bool
     Vertices    : Vertex2D array
   }
 type [<Struct>] Frame =
@@ -74,6 +77,7 @@ module SceneWriter =
       do! iindent 
             (ioutput {
                 do! ilinef "ColorIndex: %d" p.ColorIndex.Index
+                do! ilinef "IsConvex  : %A" p.IsConvex
                 do! ilinef "Vertices  : %d" p.Vertices.Length
                 do! iindent (iiter p.Vertices iwriteVertex)
             })
@@ -167,13 +171,34 @@ module SceneReader =
           Continue ({ Index = ci }, vc)
     }
 
+  let isConvex (vs : Vertex2D array) =
+    if vs.Length > 3 then
+      let inline v3 (v : Vertex2D) = Vector3 (float32 v.X, float32 v.Y, 0.F)
+      let sign (v0 : Vertex2D) (v1 : Vertex2D) (v2 : Vertex2D) =
+        let x = v3 v0 - v3 v1
+        let y = v3 v2 - v3 v1
+        let z = Vector3.Cross (x, y)
+        z.Z > 0.F
+      let rec loop (vs : _ array) s i =
+        if i < vs.Length then
+          let ns = sign vs.[i - 1] vs.[i] vs.[(i + 1)%vs.Length]
+          if ns <> s then 
+            false
+          else
+            loop vs s (i + 1)
+        else
+          true
+      loop vs (sign vs.[vs.Length - 1] vs.[0] vs.[1]) 1
+    else
+      true
+
   let bpolygon =
     brepeatPrefixed 
       (bpolygonDescriptor ())
       (fun (ci, vc) -> 
         breader {
           let! vs = bvertices (int vc)
-          return { ColorIndex = ci; Vertices = vs }
+          return { ColorIndex = ci; IsConvex = isConvex vs; Vertices = vs }
         }
       )
 
@@ -195,7 +220,7 @@ module SceneReader =
           (fun (ci, vc) -> 
             breader {
               let! vs = bindexedVertices vs (int vc)
-              return { ColorIndex = ci; Vertices = vs }
+              return { ColorIndex = ci; IsConvex = isConvex vs; Vertices = vs }
             }
           )
     }
