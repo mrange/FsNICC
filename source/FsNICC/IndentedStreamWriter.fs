@@ -22,13 +22,13 @@ module IndentedOutput =
     : 'T IndentedOutput = fun ctx sw i ->
     io ctx sw (i + ctx.IndentBy)
 
-  let iline (msg : string) : unit IndentedOutput = fun ctx sw i ->
+  let inline iline (msg : string) : unit IndentedOutput = fun ctx sw i ->
     sw.WriteLine ()
     if i > 0 then
       sw.Write (new String (' ', i))
     sw.Write msg
 
-  let ilinef fmt = kprintf iline fmt
+  let inline ilinef fmt = kprintf iline fmt
 
   let inline iiter
     (vs                    : 'T seq                     )

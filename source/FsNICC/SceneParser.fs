@@ -31,6 +31,7 @@ type [<Struct>] Polygon     =
     IsConvex    : bool
     IsSimple    : bool
     Vertices    : Vertex2D array
+    Simplified  : Vertex2D array array
   }
 type [<Struct>] Frame =
   {
@@ -56,7 +57,7 @@ type 'T ReadResult =
 module SceneWriter =
   open IndentedOutput
 
-  let iwritePaletteItem (pi : PaletteItem) =
+  let inline iwritePaletteItem (pi : PaletteItem) =
     ioutput {
       do! iline "PaletteItem"
       do! iindent
@@ -67,11 +68,11 @@ module SceneWriter =
             })
     }
 
-  let iwriteVertex (v: Vertex2D) =
+  let inline iwriteVertices (vs: Vertex2D array) =
     ioutput {
-      do! ilinef "Vertex: %03d, %03d" v.X v.Y
+      do! ilinef "Vertices  : %d" vs.Length
+      do! iindent (iiter vs (fun v -> ilinef "Vertex: %03d, %03d" v.X v.Y))
     }
-
   let iwritePolygon (p: Polygon) =
     ioutput {
       do! iline "Polygon"
@@ -80,8 +81,9 @@ module SceneWriter =
                 do! ilinef "ColorIndex: %d" p.ColorIndex.Index
                 do! ilinef "IsConvex  : %A" p.IsConvex
                 do! ilinef "IsSimple  : %A" p.IsSimple
-                do! ilinef "Vertices  : %d" p.Vertices.Length
-                do! iindent (iiter p.Vertices iwriteVertex)
+                do! iwriteVertices p.Vertices
+                do! ilinef "Simplified: %d" p.Simplified.Length
+                do! iindent (iiter p.Simplified iwriteVertices)
             })
     }
 
@@ -210,6 +212,10 @@ module SceneReader =
 
   let toVector2 (v : Vertex2D) : Vector2 = Vector2(float32 v.X, float32 v.Y)
 
+  let toVertex2D (v : Vector2) : Vertex2D = 
+    let inline r x = byte (round x)
+    { X = r v.X; Y = r v.Y }
+
   let toLines (vs : Vertex2D array) : Line array =
     match vs.Length with
     | 0 -> [||]
@@ -272,13 +278,57 @@ module SceneReader =
     else
       true
 
+  let makeSimple vs =
+    let split (vs : Vertex2D array) p f s =
+      let f, s = min f s, max f s
+      let vs0 = [|vs.[f..s]; [|p|]|] |> Array.concat
+      let vs1 = [|vs.[0..(f-1)] ; [|p|]; vs.[(s+1)..(vs.Length - 1)]|] |> Array.concat
+
+      struct (vs0, vs1)
+
+    let rec oloop res (vs : Vertex2D array) =
+      if vs.Length > 3 then
+        let ls = toLines vs
+        let rec loop res vs (ls : Line array) i =
+          if i + 1 < ls.Length then
+            let c = ls.[i]
+            let rec iloop res vs (ls : Line array) c j =
+              if j < ls.Length then
+                let l = ls.[j]
+                let ip = intersectPoint c l
+                if isInsideBoundingBox c ip && isInsideBoundingBox l ip then
+                  let struct (vs0, vs1) = split vs (toVertex2D ip) i j
+                  let res = oloop res vs0
+                  let res = oloop res vs1
+                  struct (true, res)
+                else
+                  iloop res vs ls c (j + 1)
+              else 
+                struct (false, res)
+            let struct (stop, res) = iloop res vs ls c (i + 1)
+            if stop then
+              res
+            else
+              loop res vs ls (i + 1)
+          else
+            vs::res
+        loop res vs ls 0
+      else
+        vs::res
+    oloop [] vs
+    |> List.toArray
+  let polygon ci vs =
+    let c = isConvex vs
+    let s = isSimple vs
+    { ColorIndex = ci; IsConvex = c; IsSimple = s; Vertices = vs; Simplified =[||] }
+
   let bpolygon =
     brepeatPrefixed
       (bpolygonDescriptor ())
       (fun (ci, vc) ->
         breader {
           let! vs = bvertices (int vc)
-          return { ColorIndex = ci; IsConvex = isConvex vs; IsSimple = isSimple vs; Vertices = vs }
+          return polygon ci vs
         }
       )
 
@@ -300,8 +350,8 @@ module SceneReader =
           (fun (ci, vc) ->
             breader {
               let! vs = bindexedVertices vs (int vc)
-              return { ColorIndex = ci; IsConvex = isConvex vs; IsSimple = isSimple vs; Vertices = vs }
-            }
+              return polygon ci vs
+             }
           )
     }
 
