@@ -323,6 +323,7 @@ module SceneReader =
       else
         vs::res
     oloop [] vs
+    |> List.rev
     |> List.toArray
   let polygon ci vs =
     let c = isConvex vs
