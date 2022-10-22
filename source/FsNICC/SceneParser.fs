@@ -16,6 +16,12 @@ type [<Struct>] Vertex2D    =
     X   : byte
     Y   : byte
   }
+type [<Struct>] Triangle2D  =
+  {
+    V0  : Vertex2D
+    V1  : Vertex2D
+    V2  : Vertex2D
+  }
 type [<Struct>] ColorIndex  =
   {
     Index   : byte
@@ -32,6 +38,7 @@ type [<Struct>] Polygon     =
     IsSimple    : bool
     Vertices    : Vertex2D array
     Simplified  : Vertex2D array array
+    Triangulated: Triangle2D array
   }
 type [<Struct>] Frame =
   {
@@ -212,7 +219,7 @@ module SceneReader =
 
   let toVector2 (v : Vertex2D) : Vector2 = Vector2(float32 v.X, float32 v.Y)
 
-  let toVertex2D (v : Vector2) : Vertex2D = 
+  let toVertex2D (v : Vector2) : Vertex2D =
     let inline r x = byte (round x)
     { X = r v.X; Y = r v.Y }
 
@@ -303,7 +310,7 @@ module SceneReader =
                   struct (true, res)
                 else
                   iloop res vs ls c (j + 1)
-              else 
+              else
                 struct (false, res)
             let struct (stop, res) = iloop res vs ls c (i + 1)
             if stop then
@@ -321,7 +328,15 @@ module SceneReader =
     let c = isConvex vs
     let s = isSimple vs
     let ss= if s then [||] else makeSimple vs
-    { ColorIndex = ci; IsConvex = c; IsSimple = s; Vertices = vs; Simplified = ss }
+    let ts= [||]
+    {
+      ColorIndex  = ci
+      IsConvex    = c
+      IsSimple    = s
+      Vertices    = vs
+      Simplified  = ss
+      Triangulated= ts
+    }
 
   let bpolygon =
     brepeatPrefixed
