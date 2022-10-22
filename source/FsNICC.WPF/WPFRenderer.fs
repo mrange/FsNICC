@@ -112,27 +112,39 @@ let toWPFScene (scene : Scene) : WPFScene =
     let rgb   = palette.[int f.ColorIndex.Index]
 
     let brush = knownBrushes.[rgb]
-    let vs    = f.Vertices
-    let pts   = Array.zeroCreate (vs.Length + 1)
-    let rec loop (vs : Vertex2D array) (pts : Point array) i =
-      if i < vs.Length then
-        let v = vs.[i]
-        pts.[i] <- Point (float v.X, float v.Y)
-        loop vs pts (i + 1)
-      else
-        let v = vs.[0]
-        pts.[i] <- Point (float v.X, float v.Y)
-
-    loop vs pts 0
-
-    let pls   = PolyLineSegment (
-        pts
-      , false
-      )
-    let pls   = freeze pls
-
     let pf    = PathFigure ()
-    pf.Segments.Add pls
+
+    let rec loop (pf : PathFigure) (vvs : Vertex2D array array) i = 
+      if i < vvs.Length then
+        let vs    = vvs.[i]
+        let pts   = Array.zeroCreate (vs.Length + 1)
+        let rec iloop (vs : Vertex2D array) (pts : Point array) i =
+          if i < vs.Length then
+            let v = vs.[i]
+            pts.[i] <- Point (float v.X, float v.Y)
+            iloop vs pts (i + 1)
+          else
+            let v = vs.[0]
+            pts.[i] <- Point (float v.X, float v.Y)
+
+        iloop vs pts 0
+
+        let pls   = PolyLineSegment (
+            pts
+          , false
+          )
+        let pls   = freeze pls
+
+        pf.Segments.Add pls
+        loop pf vvs (i + 1)
+      else
+        ()
+    let vvs =
+      if f.Simplified.Length > 0 then
+        f.Simplified
+      else
+        [|f.Vertices|]
+    loop pf vvs 0
     let pf    = freeze pf
 
     let pg    = PathGeometry ()
