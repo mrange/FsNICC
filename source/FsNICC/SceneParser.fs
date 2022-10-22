@@ -16,19 +16,20 @@ type [<Struct>] Vertex2D    =
     X   : byte
     Y   : byte
   }
-type [<Struct>] ColorIndex  = 
+type [<Struct>] ColorIndex  =
   {
     Index   : byte
   }
-type [<Struct>] PaletteItem = 
+type [<Struct>] PaletteItem =
   {
     ColorIndex  : ColorIndex
     Color       : RGB
   }
-type [<Struct>] Polygon     = 
+type [<Struct>] Polygon     =
   {
     ColorIndex  : ColorIndex
     IsConvex    : bool
+    IsSimple    : bool
     Vertices    : Vertex2D array
   }
 type [<Struct>] Frame =
@@ -57,8 +58,8 @@ module SceneWriter =
 
   let iwritePaletteItem (pi : PaletteItem) =
     ioutput {
-      do! iline "PaletteItem" 
-      do! iindent 
+      do! iline "PaletteItem"
+      do! iindent
             (ioutput {
               let c = pi.Color
               do! ilinef "ColorIndex: %d" pi.ColorIndex.Index
@@ -73,11 +74,12 @@ module SceneWriter =
 
   let iwritePolygon (p: Polygon) =
     ioutput {
-      do! iline "Polygon" 
-      do! iindent 
+      do! iline "Polygon"
+      do! iindent
             (ioutput {
                 do! ilinef "ColorIndex: %d" p.ColorIndex.Index
                 do! ilinef "IsConvex  : %A" p.IsConvex
+                do! ilinef "IsSimple  : %A" p.IsSimple
                 do! ilinef "Vertices  : %d" p.Vertices.Length
                 do! iindent (iiter p.Vertices iwriteVertex)
             })
@@ -110,7 +112,7 @@ module SceneReader =
 
   let inline brgb () =
     breader {
-      let inline cp c i = 
+      let inline cp c i =
         let c = int c
         let cp    = (c >>> i) &&& 0xF
         // Atari ST color
@@ -133,7 +135,7 @@ module SceneReader =
       // Zip the bit selection with the rgb values
       let rec loop bitmask i j (rgbs : _ array) (pds : _ array)=
         if bitmask <> 0u then
-          let i = 
+          let i =
             if (bitmask &&& 0x8000u) <> 0u then
               pds.[i] <- { ColorIndex = { Index = j }; Color = rgbs.[i] }
               i + 1
@@ -147,7 +149,7 @@ module SceneReader =
   type 'T PolygonDescriptor =
     | IsPolygon of ColorIndex*byte
     | IsExit    of ('T -> 'T ReadResult)
-  
+
   let inline bvertex () =
     breader {
       let! x = bbyte ()
@@ -171,6 +173,60 @@ module SceneReader =
           Continue ({ Index = ci }, vc)
     }
 
+  type [<Struct>] Line =
+    {
+      P0 :  Vector2
+      P1 :  Vector2
+    }
+
+
+  let intersectPoint (l0 : Line) (l1 : Line) : Vector2 =
+    let x1  = l0.P0.X
+    let y1  = l0.P0.Y
+    let x2  = l0.P1.X
+    let y2  = l0.P1.Y
+    let x3  = l1.P0.X
+    let y3  = l1.P0.Y
+    let x4  = l1.P1.X
+    let y4  = l1.P1.Y
+    // https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection#Given_two_points_on_each_line
+    let d   = (x1-x2)*(y3-y4)-(y1-y2)*(x3-x4)
+    if abs d < System.Single.Epsilon then
+      Vector2 (nanf, nanf)
+    else
+      let e   = x1*y2-y1*x2
+      let f   = x3*y4-y3*x4
+      let px  = (e*(x3-x4)-f*(x1-x2))/d
+      let py  = (e*(y3-y4)-f*(y1-y2))/d
+      Vector2 (px, py)
+
+  let isInsideBoundingBox (l : Line) (p : Vector2) =
+    let n = Vector2.Min (l.P0, l.P1)
+    let x = Vector2.Max (l.P0, l.P1)
+    n.X <= p.X && n.Y <= p.Y && p.X <= x.X && p.Y <= x.Y
+
+  let isIntersecting (l0 : Line) (l1 : Line) : bool =
+    let p = intersectPoint l0 l1
+    isInsideBoundingBox l0 p && isInsideBoundingBox l1 p
+
+  let toVector2 (v : Vertex2D) : Vector2 = Vector2(float32 v.X, float32 v.Y)
+
+  let toLines (vs : Vertex2D array) : Line array =
+    match vs.Length with
+    | 0 -> [||]
+    | 1 -> [|{ P0 = toVector2 vs.[0]; P1 = toVector2 vs.[0]; }|]
+    | _ ->
+      let rec loop b (vs : Vertex2D array) (res : Line array) i =
+        if i < vs.Length then
+          let c = toVector2 vs.[i]
+          res.[i] <- { P0 = b; P1 = c }
+          loop b vs res (i + 1)
+        else
+          res
+      let b   = toVector2 vs.[vs.Length - 1]
+      let res = Array.zeroCreate vs.Length
+      loop b vs res 0
+
   let isConvex (vs : Vertex2D array) =
     if vs.Length > 3 then
       let inline v3 (v : Vertex2D) = Vector3 (float32 v.X, float32 v.Y, 0.F)
@@ -182,7 +238,7 @@ module SceneReader =
       let rec loop (vs : _ array) s i =
         if i < vs.Length then
           let ns = sign vs.[i - 1] vs.[i] vs.[(i + 1)%vs.Length]
-          if ns <> s then 
+          if ns <> s then
             false
           else
             loop vs s (i + 1)
@@ -192,13 +248,38 @@ module SceneReader =
     else
       true
 
+  let isSimple (vs : Vertex2D array) =
+    if vs.Length > 3 then
+      let ls = toLines vs
+      let rec loop (ls : Line array) i =
+        if i + 1 < ls.Length then
+          let c = ls.[i]
+          let rec iloop (ls : Line array) c i =
+            if i < ls.Length then
+              let l = ls.[i]
+              if isIntersecting c l then
+                true
+              else
+                iloop ls c (i + 1)
+            else false
+          let intersects = iloop ls c (i + 1)
+          if intersects then
+            false
+          else
+            loop ls (i + 1)
+        else
+          true
+      loop ls 0
+    else
+      true
+
   let bpolygon =
-    brepeatPrefixed 
+    brepeatPrefixed
       (bpolygonDescriptor ())
-      (fun (ci, vc) -> 
+      (fun (ci, vc) ->
         breader {
           let! vs = bvertices (int vc)
-          return { ColorIndex = ci; IsConvex = isConvex vs; Vertices = vs }
+          return { ColorIndex = ci; IsConvex = isConvex vs; IsSimple = isSimple vs; Vertices = vs }
         }
       )
 
@@ -215,12 +296,12 @@ module SceneReader =
       let! vc = bbyte ()
       let! vs = bvertices (int vc)
       return!
-        brepeatPrefixed 
+        brepeatPrefixed
           (bpolygonDescriptor ())
-          (fun (ci, vc) -> 
+          (fun (ci, vc) ->
             breader {
               let! vs = bindexedVertices vs (int vc)
-              return { ColorIndex = ci; IsConvex = isConvex vs; Vertices = vs }
+              return { ColorIndex = ci; IsConvex = isConvex vs; IsSimple = isSimple vs; Vertices = vs }
             }
           )
     }
@@ -247,7 +328,7 @@ module SceneReader =
         | Next      ps -> ps, false, true
         | NextPage  ps -> ps, true , true
         | Done      ps -> ps, false, false
-      let frame = 
+      let frame =
         {
           ClearScreen   = clearScreen
           PaletteDelta  = paletteDelta

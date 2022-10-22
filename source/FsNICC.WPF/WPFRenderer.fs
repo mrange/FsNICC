@@ -26,7 +26,7 @@ type [<Struct>] WPFScene =
     Frames : WPFFrame array
   }
 
-let freeze (f : #Freezable) = 
+let freeze (f : #Freezable) =
   f.Freeze ()
   f
 
@@ -53,7 +53,7 @@ type SceneElement (scene : WPFScene) =
 
     let translateTransform  = TranslateTransform ()
     let scaleTransform      = ScaleTransform ()
-    let fullTransform       = 
+    let fullTransform       =
       let t     = TransformGroup ()
       t.Children.Add (TranslateTransform (-128., -100.))
       t.Children.Add scaleTransform
@@ -148,17 +148,17 @@ let toWPFScene (scene : Scene) : WPFScene =
       match knownBrushes.TryGetValue color with
       | true  , _ -> ()
       | false , _ ->
-        let inline convert v = (v <<< 4) + v 
-        let c = Color.FromRgb ( convert color.Red  
+        let inline convert v = (v <<< 4) + v
+        let c = Color.FromRgb ( convert color.Red
                               , convert color.Green
-                              , convert color.Blue 
+                              , convert color.Blue
                               )
         let b = SolidColorBrush c
         let b = freeze b
         knownBrushes.Add (color, b)
 
-    let polygons = 
-      f.Polygons 
+    let polygons =
+      f.Polygons
       //|> Array.filter (fun p -> p.IsConvex)
       |> Array.map mapPolygon
 

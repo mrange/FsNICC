@@ -35,15 +35,15 @@ type [<Struct>] SpectreScene =
   }
 
 let toSpectreScene (scene : Scene) : SpectreScene =
-  let inline toColor (rgb : RGB) = 
+  let inline toColor (rgb : RGB) =
     let inline convert c = (c <<< 4) + c
     Color.FromRgb (convert rgb.Red, convert rgb.Green, convert rgb.Blue)
 
   let palette = Array.zeroCreate 16
 
   let mapPolygon (polygon : Polygon) : SpectrePolygon =
-    let points = 
-      polygon.Vertices 
+    let points =
+      polygon.Vertices
       |> Array.map (fun v -> PointF (float32 v.X, float32 v.Y))
     {
       Fill    = palette.[int polygon.ColorIndex.Index]
@@ -53,16 +53,16 @@ let toSpectreScene (scene : Scene) : SpectreScene =
   let mapFrame (frame : Frame) : SpectreFrame =
     for pi in frame.PaletteDelta do
       palette.[int pi.ColorIndex.Index] <- toColor pi.Color
-    let polygons = 
+    let polygons =
       frame.Polygons
       |> Array.map mapPolygon
-    { 
+    {
       ClearScreen = frame.ClearScreen
-      Polygons    = polygons 
+      Polygons    = polygons
     }
 
-  let frames = 
-    scene.Frames 
+  let frames =
+    scene.Frames
     |> Array.map mapFrame
 
   { Frames = frames }

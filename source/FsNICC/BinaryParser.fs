@@ -13,7 +13,7 @@ module BinaryReader =
     v <- (v &&& 0x33333333u) + ((v >>> 2) &&& 0x33333333u)
     ((v + (v >>> 4) &&& 0xF0F0F0Fu) * 0x1010101u) >>> 24
 
-  let brun (br : 'T BinaryReader) bs : 'T = 
+  let brun (br : 'T BinaryReader) bs : 'T =
     let struct (v, _) = br bs 0
     v
 
@@ -36,12 +36,12 @@ module BinaryReader =
     struct (bs.[i], i + 1)
 
   let inline bword () : uint16 BinaryReader = fun bs i ->
-    let word = 
-        ((uint16 bs.[i]) <<< 8) 
+    let word =
+        ((uint16 bs.[i]) <<< 8)
       + (uint16 bs.[i +  1])
     struct (word, i + 2)
 
-  let inline brepeat 
+  let inline brepeat
     (count                  : int             )
     ([<InlineIfLambda>] br  : 'T BinaryReader )
     : 'T array BinaryReader = fun bs i ->
@@ -137,7 +137,7 @@ module BinaryReader =
                               ) : 'T BinaryReader =
         bvalue v
       member inline x.ReturnFrom  (br : 'T BinaryReader
-                                  ): 'T BinaryReader = 
+                                  ): 'T BinaryReader =
         br
     end
   let breader = BinaryReaderBuilder()

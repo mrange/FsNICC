@@ -10,15 +10,15 @@ type IndentContext =
 
 type 'T IndentedOutput = IndentContext -> StreamWriter -> int -> 'T
 module IndentedOutput =
-  let irun indentBy sw (io : 'T IndentedOutput) = 
+  let irun indentBy sw (io : 'T IndentedOutput) =
     let ctx = {IndentBy = indentBy}
     io ctx sw 0
 
   let inline ivalue v : 'T IndentedOutput = fun ctx sw i ->
     v
 
-  let inline iindent 
-    ([<InlineIfLambda>] io  : 'T IndentedOutput ) 
+  let inline iindent
+    ([<InlineIfLambda>] io  : 'T IndentedOutput )
     : 'T IndentedOutput = fun ctx sw i ->
     io ctx sw (i + ctx.IndentBy)
 
@@ -32,7 +32,7 @@ module IndentedOutput =
 
   let inline iiter
     (vs                    : 'T seq                     )
-    ([<InlineIfLambda>] uf : 'T -> unit IndentedOutput  ) 
+    ([<InlineIfLambda>] uf : 'T -> unit IndentedOutput  )
     : unit IndentedOutput = fun ctx sw i ->
     for v in vs do
         uf v ctx sw i
@@ -72,7 +72,7 @@ module IndentedOutput =
                               ) : 'T IndentedOutput =
         ivalue v
       member inline x.ReturnFrom  (io : 'T IndentedOutput
-                                  ): 'T IndentedOutput = 
+                                  ): 'T IndentedOutput =
         io
     end
 
