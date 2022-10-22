@@ -179,7 +179,6 @@ module SceneReader =
       P1 :  Vector2
     }
 
-
   let intersectPoint (l0 : Line) (l1 : Line) : Vector2 =
     let x1  = l0.P0.X
     let y1  = l0.P0.Y
@@ -203,7 +202,7 @@ module SceneReader =
   let isInsideBoundingBox (l : Line) (p : Vector2) =
     let n = Vector2.Min (l.P0, l.P1)
     let x = Vector2.Max (l.P0, l.P1)
-    n.X <= p.X && n.Y <= p.Y && p.X <= x.X && p.Y <= x.Y
+    n.X < p.X && n.Y < p.Y && p.X < x.X && p.Y < x.Y
 
   let isIntersecting (l0 : Line) (l1 : Line) : bool =
     let p = intersectPoint l0 l1
@@ -220,7 +219,7 @@ module SceneReader =
         if i < vs.Length then
           let c = toVector2 vs.[i]
           res.[i] <- { P0 = b; P1 = c }
-          loop b vs res (i + 1)
+          loop c vs res (i + 1)
         else
           res
       let b   = toVector2 vs.[vs.Length - 1]
