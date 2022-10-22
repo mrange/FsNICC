@@ -281,8 +281,8 @@ module SceneReader =
   let makeSimple vs =
     let split (vs : Vertex2D array) p f s =
       let f, s = min f s, max f s
-      let vs0 = [|vs.[f..s]; [|p|]|] |> Array.concat
-      let vs1 = [|vs.[0..(f-1)] ; [|p|]; vs.[(s+1)..(vs.Length - 1)]|] |> Array.concat
+      let vs0 = [|vs.[f..(s-1)]; [|p|]|] |> Array.concat
+      let vs1 = [|vs.[0..(f-1)] ; [|p|]; vs.[s..(vs.Length - 1)]|] |> Array.concat
 
       struct (vs0, vs1)
 
@@ -320,7 +320,8 @@ module SceneReader =
   let polygon ci vs =
     let c = isConvex vs
     let s = isSimple vs
-    { ColorIndex = ci; IsConvex = c; IsSimple = s; Vertices = vs; Simplified =[||] }
+    let ss= if s then [||] else makeSimple vs
+    { ColorIndex = ci; IsConvex = c; IsSimple = s; Vertices = vs; Simplified = ss }
 
   let bpolygon =
     brepeatPrefixed
