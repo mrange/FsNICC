@@ -3,6 +3,7 @@ open System
 open System.Collections.Generic
 open System.Globalization
 open System.Windows
+open System.Windows.Input
 open System.Windows.Media
 open System.Windows.Media.Animation
 
@@ -38,6 +39,9 @@ type SceneElement (scene : WPFScene) =
       let pc = PropertyChangedCallback SceneElement.TimePropertyChanged
       let md = PropertyMetadata (0., pc)
       DependencyProperty.Register ("Time", typeof<float>, typeof<SceneElement>, md)
+
+    let mutable frameNo = 0
+
 
     let formattedText text  = FormattedText (
         text
@@ -75,15 +79,29 @@ type SceneElement (scene : WPFScene) =
       let ani = DoubleAnimation (b, e, dur) |> freeze
       x.BeginAnimation (SceneElement.TimeProperty, ani);
 
+    override x.OnKeyUp e =
+      match e.Key with
+      | Key.Up    -> frameNo <- frameNo + 1
+      | Key.Down  -> frameNo <- frameNo - 1
+      | _         -> ()
+      frameNo <- max frameNo 0
+      frameNo <- min frameNo (scene.Frames.Length - 1)
+      ()
+
     override x.OnRender dc =
       let time  = x.Time
       let rs    = x.RenderSize
 
       let s     = min (rs.Width/256.) (rs.Height/200.)
 
-      let dfps  = 25.
+      let dfps  = 30.
+#if STEP_FRAME
+      let i     = frameNo
+#else
       let i     = int (floor (time * dfps))
       let i     = i % scene.Frames.Length
+#endif
+
       let f     = scene.Frames.[i]
 
       let ft    = formattedText $"Frame: {i}\nTime : %.2f{time}s\nPolys: {f.Polygons.Length}"
@@ -117,16 +135,12 @@ let toWPFScene (scene : Scene) : WPFScene =
     let rec loop (pf : PathFigure) (vvs : Vertex2D array array) i = 
       if i < vvs.Length then
         let vs    = vvs.[i]
-        let pts   = Array.zeroCreate (vs.Length + 1)
+        let pts   = Array.zeroCreate (vs.Length)
         let rec iloop (vs : Vertex2D array) (pts : Point array) i =
           if i < vs.Length then
             let v = vs.[i]
             pts.[i] <- Point (float v.X, float v.Y)
             iloop vs pts (i + 1)
-          else
-            let v = vs.[0]
-            pts.[i] <- Point (float v.X, float v.Y)
-
         iloop vs pts 0
 
         let pls   = PolyLineSegment (
@@ -137,14 +151,17 @@ let toWPFScene (scene : Scene) : WPFScene =
 
         pf.Segments.Add pls
         loop pf vvs (i + 1)
-      else
-        ()
+
     let vvs =
       if f.Simplified.Length > 0 then
         f.Simplified
       else
         [|f.Vertices|]
     loop pf vvs 0
+
+    let v0 = vvs.[0].[0]
+    pf.StartPoint <- Point (float v0.X, float v0.Y)
+    pf.IsClosed   <- true
     let pf    = freeze pf
 
     let pg    = PathGeometry ()
@@ -172,13 +189,16 @@ let toWPFScene (scene : Scene) : WPFScene =
 
     let polygons =
       f.Polygons
-      //|> Array.filter (fun p -> p.IsConvex)
+//      |> Array.filter (fun p -> p.Simplified.Length > 0)
+//      |> Array.filter (fun p -> not p.IsConvex)
       |> Array.map mapPolygon
 
     { Polygons = polygons }
 
 
-  let wpfFrames = frames |> Array.map mapFrame
+  let wpfFrames = 
+    frames 
+    |> Array.map mapFrame
 
   { Frames = wpfFrames }
 
@@ -187,6 +207,9 @@ let renderScene (scene : Scene) =
 
   let window  = Window (Title = "ST-NICC in F#", Background = Brushes.Black)
   let element = SceneElement wpfScene
-  window.Content <- element
+  window.Content            <- element
+  element.IsHitTestVisible  <- true
+  element.Focusable         <- true
+  element.Focus () |> ignore
   element.Start ()
   window.ShowDialog () |> ignore
