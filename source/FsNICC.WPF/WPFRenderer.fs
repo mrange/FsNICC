@@ -136,6 +136,7 @@ let toWPFScene (scene : Scene) : WPFScene =
     let pf    = freeze pf
 
     let pg    = PathGeometry ()
+    pg.FillRule <- FillRule.Nonzero;
     pg.Figures.Add pf
     let pg = freeze pg
 
