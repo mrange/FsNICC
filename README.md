@@ -1,5 +1,15 @@
 # Recreating ST-NICC 2000 1st place demo in F#
 
+## TLDR; parses a polygon file format for an Atari STE demo released in 2000
+
+### Build and run
+
+```bash
+// In a terminal window
+cd source/FsNICC.Spectre
+dotnet run -c Release
+```
+
 ST-NICC aka "ST News International Christmas Coding Convention" had a demo competition in 2000, the [winner](https://www.youtube.com/watch?v=nqVJWFNpTqA) was [Oxygene](https://demozoo.org/groups/2118/) with an amazing 3D screen for Atari STE.
 
 I did play a small part in providing the PRO tracker player.
@@ -297,8 +307,211 @@ The first parser `t` parses the prefix and return either a `Continue` value with
 
 If somone has some ideas how make it less clunky and/or increase the generality of the abstraction I would love to hear it.
 
+## Rendering ST-NICC in 2022
 
-## Appendix 1 - Portable fast bit population count.
+To give the proper retro feeling I felt it to be a great idea to render the entire thing in the terminal.
+
+Printing to the terminal can be slow and colors not portable. Luckily there are portable and libraries like [Terminal.GUI](https://github.com/gui-cs/Terminal.Gui) and [Spectre.Console](https://github.com/spectreconsole/spectre.console).
+
+### Spectre.Console
+I went with [Spectre.Console](https://github.com/spectreconsole/spectre.console) as I used it before to render 2D particle constraints systems in the terminal before.
+
+Setting up a 2D canvas (a ridocolously entertaining idea) in the terminal is very easy with [Spectre.Console](https://github.com/spectreconsole/spectre.console).
+
+```fsharp
+  // The dimensions of the Atari STE graphics area in ST-NICC
+  let w = 256
+  let h = 200
+
+  let canvas = Canvas (w, h)
+  let updater (ctx : LiveDisplayContext) =
+      // Red color
+      let red = Spectre.Console.Color (255uy, 0uy, 0uy)
+      for i = 0 to 199 do
+        // Draw a line of red pixels
+        canvas.SetPixel(i, i, red) |> ignore
+        // Refresh screen between each pixel drawn
+        ctx.Refresh()
+  AnsiConsole.Live(canvas).Start(updater)
+```
+
+### Drawing polygons with ImageSharp
+
+As great as [Spectre.Console](https://github.com/spectreconsole/spectre.console) is [Spectre.Console](https://github.com/spectreconsole/spectre.console) doesn't support drawing polygons and a polygon filler function is a pain to implement. I know, I tried and failed implementing one for the old Atari STE.
+
+Instead, I lifted in [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp). As my work here is licensed under Apache License V2 I can chose that option when chosing license uder [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp) split license.
+
+This makes the updater function for the terminal straight forward:
+
+```fsharp
+  let updater (ctx : LiveDisplayContext) =
+    // Create an RGB image matching the Canvas width and height
+    use image = new Image<Rgb24> (w, h)
+    // Draw each frame
+    for frame = 0 to sscene.Frames.Length - 1 do
+      // Mutator function
+      let filler (ctx : IImageProcessingContext) =
+        let f = sscene.Frames.[frame]
+        // Some frames rely on the previous frame not being cleared to look right
+        if f.ClearScreen then
+          ctx.Clear (Color ()) |> ignore
+        // Draw each polygon
+        for p in f.Polygons do
+          ctx.FillPolygon (p.Fill, p.Points) |> ignore
+      image.Mutate filler
+
+      for y = 0 to h - 1 do
+        for x = 0 to w - 1 do
+          // Grab an image pixel
+          let c = image[x, y]
+          // Convert to Spectre color
+          let sc = Spectre.Console.Color (c.R, c.G, c.B)
+          // Draw it in the Spectre canvas
+          canvas.SetPixel(x, y, sc) |> ignore
+      ctx.Refresh()
+```
+
+The frames however are not the same model as produced by the scene parser. Instead of preprocessing step converts it a specialized model to fit rendering with Spectre + ImageSharp.
+
+```fsharp
+
+// Everything precomputed so we just can render the polygon with ImageSharp
+type [<Struct>] SpectrePolygon =
+  {
+    Fill        : Color
+    Points      : PointF array
+  }
+
+// Dropped the palette delta as the actual color is now part of the polygon
+type [<Struct>] SpectreFrame =
+  {
+    ClearScreen : bool
+    Polygons    : SpectrePolygon array
+  }
+
+type [<Struct>] SpectreScene =
+  {
+    Frames      : SpectreFrame array
+  }
+
+let toSpectreScene (scene : Scene) : SpectreScene =
+  // Maps from parsed RGB to ImageSharp Color
+  let inline toColor (rgb : RGB) =
+    let inline convert c = (c <<< 4) + c
+    Color.FromRgb (convert rgb.Red, convert rgb.Green, convert rgb.Blue)
+
+  // Atari STE had 16 color palette, all of them black to begin with
+  let palette = Array.zeroCreate 16
+
+  let mapPolygon (polygon : Polygon) : SpectrePolygon =
+    // Map the parsed byte*byte vertices to float32*float32 vertices
+    let points =
+      polygon.Vertices
+      |> Array.map (fun v -> PointF (float32 v.X, float32 v.Y))
+    {
+      // Lookup the color in the current palette
+      Fill    = palette.[int polygon.ColorIndex.Index]
+      Points  = points
+    }
+
+  let mapFrame (frame : Frame) : SpectreFrame =
+    // Updates the palette from the palette delta
+    for pi in frame.PaletteDelta do
+      palette.[int pi.ColorIndex.Index] <- toColor pi.Color
+    let polygons =
+      frame.Polygons
+      |> Array.map mapPolygon
+    {
+      ClearScreen = frame.ClearScreen
+      Polygons    = polygons
+    }
+
+  let frames =
+    scene.Frames
+    |> Array.map mapFrame
+
+  { Frames = frames }
+```
+
+With that we are done and can observe the sillyness by running the program in a terminal
+
+```bash
+dotnet run -c Release
+```
+
+Merry christmas!
+
+## Appendix 0 - Rendering STNICC in WPF
+
+For Windows users wanting "high fidelity" graphics there is also provided a WPF project that uses the same input to render STNICC in WPF.
+
+Works along similar principles as the [Spectre.Console](https://github.com/spectreconsole/spectre.console) example.
+
+However, F# is a bit WPF resistant so for a C# developer used to WPF it might look odd but that is because XAML isn't support for F# AFAIK.
+
+A challenge with WPF is how to trigger a redraw of the screen at 60FPS. I never really found a brilliant way to do it so I rely on WPF animations that I use to trigger an invalidate of the visual and then I render the STNICC polygons in `OnRender`.
+
+```fsharp
+type SceneElement (scene : WPFScene) =
+  class
+    inherit UIElement ()
+
+    // Setup the dependency property descriptor for the Time property,
+    //  this dependency property we will animate and on each change the visual
+    //  will be invalidated
+    static let timeProperty =
+      let pc = PropertyChangedCallback SceneElement.TimePropertyChanged
+      let md = PropertyMetadata (0., pc)
+      DependencyProperty.Register ("Time", typeof<float>, typeof<SceneElement>, md)
+
+    // Invalidates the visual
+    static member TimePropertyChanged (d : DependencyObject) (e : DependencyPropertyChangedEventArgs) =
+      let g = d :?> SceneElement
+      g.InvalidateVisual ()
+
+    static member TimeProperty = timeProperty
+
+    member x.Time = x.GetValue SceneElement.TimeProperty :?> float
+
+    // Starts the animation for the the Time property
+    member x.Start () =
+      let b   = 0.
+      let e   = 1E9
+      let dur = Duration (TimeSpan.FromSeconds (e - b))
+      let ani = DoubleAnimation (b, e, dur) |> freeze
+      x.BeginAnimation (SceneElement.TimeProperty, ani);
+
+    override x.OnRender dc =
+      let time  = x.Time
+      // Render Stuff!
+      ()
+```
+## Appendix 1 - Debugging and testing the parser
+
+Even if I think the binary parser combinators helps writing a correct parser it is still bit fiddling and very easy to screw up.
+
+So early on in the process I built functions to write the parsed model into an intended text stream.
+
+This text stream is committed to git: `assets/scene1.txt`
+
+This helped me alot during the initial parsing so that I could have an easy text format to see if the parsed values I produced made sense.
+
+But it still provides value for me when I do refactorings to the code for example optimizations or extending it with functionality to split complex polygons into simple ones.
+
+After the refactoring I regenerate the text file and make sure that the model changes only contain the expected changes.
+
+A neat little trick I think for when one are implementing parsers where you like to check the parser model in its entirity after refactoring yet want to make easy to establish a new baseline after determing the refactoring produced the right changes to the model (commit the updated text file).
+
+I wrote a little indented streamer writer combinator library.  I found the library surprisingly slow but at least it produces the right result :).
+
+I suppose I should debug it in depth to find the bottleneck someday.
+
+## Appendix 2 - My contribution to STNICC 2000
+As mentioned I did a small contribution to STNICC by providing the PRO tracker player.
+
+If anyone is interested in a arcane Atari topic I wrote up a blog explaining the history for the [PRO tracker player](https://github.com/mrange/pt_src3).
+
+## Appendix 3 - Portable fast bit population count.
 
 An interesting problem is how to count the number of bits a word effectively. For this parser performance it's not a problem but a fast bit counter is so wonderfully opaque and obscure I just had to include it.
 
@@ -319,7 +532,7 @@ Wonderful, just wonderful. I really recommend the [bithacks](http://graphics.sta
 
 If we know a program always executes on x86 we could use the [x86 intrinsics](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.intrinsics.x86.popcnt.popcount?view=net-7.0#system-runtime-intrinsics-x86-popcnt-popcount(system-uint32)) to count bits as this is supported by all x86 CPUs.
 
-## Appendix 2 - Unfinished work
+## Appendix 4 - Unfinished work
 
 To support modern hardware we should triangulate the polygons.
 
