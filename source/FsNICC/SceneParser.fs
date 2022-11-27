@@ -193,7 +193,6 @@ module SceneReader =
         | _       ->
           let ci = (pd >>> 4) &&& 0xFuy
           let vc = pd &&& 0xFuy
-          let vc = vc
           Continue ({ Index = ci }, vc)
     }
 
