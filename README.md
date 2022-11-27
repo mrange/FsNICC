@@ -8,7 +8,7 @@
 ### Build and run
 
 ```bash
-// In a terminal window
+# In a terminal window
 cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
@@ -444,6 +444,8 @@ let toSpectreScene (scene : Scene) : SpectreScene =
 With that we are done and can observe the silliness by running the program in a terminal
 
 ```bash
+# In a terminal window
+cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
 
@@ -454,6 +456,13 @@ dotnet run -c Release
 ## Appendix 0 - Rendering STNICC in WPF
 
 For Windows users wanting "high fidelity" graphics there is also provided a WPF project that uses the same input to render STNICC in WPF.
+
+```bash
+# Only works on Windows
+cd source/FsNICC.WPF
+dotnet run -c Release
+```
+
 
 Works along similar principles as the [Spectre.Console](https://github.com/spectreconsole/spectre.console) example.
 
