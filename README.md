@@ -23,7 +23,7 @@ I did play a small part in providing the PRO tracker player.
 
 I much later found out that there was competition in 2019 to port the Oxygene demo on different platforms.
 
-There are some amazing ones like:
+There are some amazing ones for:
 
 * [Amiga](https://www.youtube.com/watch?v=7sYhIxiizKY)
 * [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY&t=3s)
@@ -37,7 +37,7 @@ I sometimes write for F# advent, usually about things that have no use to anyone
 
 I was thinking, could I recreate the ST-NICC winner in F# for F# advent?
 
-From the invite to port the demo there was a format description as well as the original data file.
+From the competition invite to port the demo there was a format description as well as the original data file.
 
 So in theory I could do it.
 
@@ -196,7 +196,7 @@ The RGB color is a 16bit word that looks something like this: `0x0FA3`. The last
 
 Thus `0x0777` on Atari ST was full white, on the Atari STE `0x0FFF` was full white. In order to be backwards compatible `0x0777` on Atari STE should be close to full white. Because of that bit 3 in each nibble is actually bit 0 and bit 0-2 are shifted left 1 step.
 
-This will complicate stuff for us 30 year later.
+This will complicate stuff for us 20+ year later.
 
 ```fsharp
   let inline brgb () =
@@ -257,7 +257,7 @@ This delta will then be used when updating the palette when we are rendering fra
 
 ### A sense of failure in abstraction
 
-While I got the parser working in the end I felt I haven't found the right abstractions. My main problem was that while parsing the polygons they are each prefixed with a value that either says that following bytes are a polygon or the frame is complete and even if we should jump to the next 64KiB page in the file.
+While I got the parser working in the end I feel that I haven't found the right abstractions. My main problem was that while parsing the polygons they are each prefixed with a value that either says that following bytes are a polygon or the frame is complete and even if we should jump to the next 64KiB page in the file.
 
 I suppose the reason for the 64KiB pages in the file is because of the original demo streaming from disk. I think it uses two 64KiB buffers. One buffer is being rendered and the other is being populated from disk. When the demo reaches flip page command it renders the other buffer and the first buffer is populated from disk.
 
@@ -278,7 +278,7 @@ The polygon parser looks like this:
       )
 ```
 
-Above doesn't look too bad but I felt the signature of the `brepeatPrefixed` is too obscure:
+Above doesn't look too bad but I feel the signature of the `brepeatPrefixed` is too obscure:
 
 ```fsharp
   type PrefixResult<'S, 'T, 'U> =
