@@ -2,6 +2,7 @@
 
 ## TLDR; parses a polygon file format for an Atari STE demo released in 2000
 
+![F#-NICC screenshot #1](assets/fs-nicc.jpg)
 [F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
 
 ### Build and run
@@ -448,7 +449,7 @@ dotnet run -c Release
 
 ![F#-NICC screenshot #1](assets/fs-nicc.jpg)
 
-Merry christmas!
+*Merry christmas!*
 
 ## Appendix 0 - Rendering STNICC in WPF
 
