@@ -34,7 +34,7 @@ There are some amazing ones for:
 
 ## F# advent 2022
 
-I sometimes write for F# advent, usually about things that have no use to anyone but perhaps interesting to a few people out there.
+I sometimes write for [F# advent](https://sergeytihon.com/2022/10/28/f-advent-calendar-in-english-2022/), usually about things that have no use to anyone but perhaps interesting to a few people out there.
 
 I was thinking, could I recreate the ST-NICC winner in F# for F# advent?
 
