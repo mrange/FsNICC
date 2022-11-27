@@ -444,7 +444,7 @@ With that we are done and can observe the silliness by running the program in a 
 dotnet run -c Release
 ```
 
-![F#-NICC screenshot #1](assets/fs-nicc-0.gif)
+![F#-NICC screenshot #1](assets/fs-nicc.jpg)
 
 Merry christmas!
 
