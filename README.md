@@ -129,10 +129,10 @@ Once parsed we "just" render frame by frame to recreate the ST-NICC winner.
 I thought a binary parser combinator makes sense, like so:
 
 ```fsharp
+// A 'T BinaryReader takes a byte array and an index as input.
+//  It computes a value of 'T and returns it plus the updated index
 type 'T BinaryReader = byte array -> int -> struct ('T*int)
 ```
-
-So a `'T BinaryReader` takes a byte array and an int and product a value `'T` and the position of after the value in the byte array.
 
 When parsing text files it's common to return an option or something similar as it's common in text parsers to attempt different parsers to find that one that matches. Binary parsers tend to be more read a value that tells you what the following bytes represent, pick the correct parser and parse the bytes. If the input is incorrect we just throw and stop the entire parsing process.
 
@@ -143,6 +143,7 @@ The format consists of either byte or word (2 bytes) values so we need parsers f
     struct (bs.[i], i + 1)
 
   let inline bword () : uint16 BinaryReader = fun bs i ->
+    // Atari STE uses Motorola 68000 CPU which stores number in big-endian
     let word =
         ((uint16 bs.[i]) <<< 8)
       + (uint16 bs.[i +  1])
@@ -282,12 +283,16 @@ The polygon parser looks like this:
 Above doesn't look too bad but I feel the signature of the `brepeatPrefixed` is too obscure:
 
 ```fsharp
+  // Continue means continue to apply the parser with the seed value 'S
+  // Stop means stop parsing and transform accumulated value 'T to 'U
   type PrefixResult<'S, 'T, 'U> =
     | Continue  of  'S
     | Stop      of  ('T -> 'U)
 
   let inline brepeatPrefixed
+    // Prefix parser
     ([<InlineIfLambda>] t   : PrefixResult<'S, 'T array, 'U> BinaryReader )
+    // Value parser accepting a seed value of 'S producing 'T
     ([<InlineIfLambda>] uf  : 'S -> 'T BinaryReader                       )
     : 'U BinaryReader = fun bs i ->
 ```
@@ -297,18 +302,23 @@ I feel it is too clunky and not generic enough.
 The first parser `t` parses the prefix and returns either a `Continue` value with a seed value given to the second parameter (for example how many vertices should be read for the following polygon). If we are done it returns a `Stop` value with a function that transforms the accumulated value (a polygon array for example) into the final parser value. This is to allow the prefix parser to send one of three variants to the frame parser, read Next frame, flip page and read Next frame or Stop.
 
 ```fsharp
+  // Ready the polygon descriptor prefix
   let bpolygonDescriptor () =
     breader {
       let! pd = bbyte ()
       return
         match pd with
+        // 3 special cases of polygon descriptors that stops
+        //  reading polygons
         | 0xFFuy  -> Stop Next
         | 0xFEuy  -> Stop NextPage
         | 0xFDuy  -> Stop Done
         | _       ->
+          // Extract polygon color index
           let ci = (pd >>> 4) &&& 0xFuy
+          // Extract number of vertices in the polygon
           let vc = pd &&& 0xFuy
-          let vc = vc
+          // Read following bytes as a polygon
           Continue ({ Index = ci }, vc)
     }
 ```
