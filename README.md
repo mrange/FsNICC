@@ -9,14 +9,19 @@
 cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
+![ST-NICC screenshot #1](assets/st-nicc-0.gif)
+![ST-NICC screenshot #2](assets/st-nicc-1.gif)
 
 ST-NICC aka "ST News International Christmas Coding Convention" had a demo competition in 2000, the [winner](https://www.youtube.com/watch?v=nqVJWFNpTqA) was [Oxygene](https://demozoo.org/groups/2118/) with an amazing 3D screen for Atari STE.
+
+![ST-NICC screenshot #3](assets/st-nicc-2.gif)
+![ST-NICC screenshot #4](assets/st-nicc-3.gif)
 
 I did play a small part in providing the PRO tracker player.
 
 I much later found out that there was competition in 2019 to port the Oxygene demo on different platforms.
 
-There were some amazing ones like:
+There are some amazing ones like:
 
 * [Amiga](https://www.youtube.com/watch?v=7sYhIxiizKY)
 * [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY&t=3s)
