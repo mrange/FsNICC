@@ -27,10 +27,10 @@ I much later found out that there was competition in 2019 to port the Oxygene de
 There are some amazing ones for:
 
 * [Amiga](https://www.youtube.com/watch?v=7sYhIxiizKY)
-* [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY&t=3s)
+* [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY)
 * [SNES](https://www.youtube.com/watch?v=dOqxLBZiBRA)
 * [Atari 800XL](https://www.youtube.com/watch?v=rVa0ZEdwqoY)
-* [BBC Micro](https://www.youtube.com/watch?v=_mVI9d2Acyw)
+* [BBC Micro](https://www.youtube.com/watch?v=_mVI9d2Acyw)([source](https://github.com/kieranhj/stnicc-beeb/tree/master/data))
 
 ## F# advent 2022
 
