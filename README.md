@@ -213,7 +213,7 @@ This will complicate stuff for us 30 year later.
     }
 ```
 
-The Atari STE had a 16 color palette. Each frame has an optional palette delta. The palette delta start with a 16 bit mask telling us what entries in the palette should be updated and following are RGB color values for each bit set to 1 in the mask.
+The Atari STE had a 16 color palette. Each frame has an optional palette delta. The palette delta starts with a 16 bit mask telling us what entries in the palette should be updated and following are RGB color values for each bit set to 1 in the mask.
 
 ```fsharp
   let bpaletteDelta : PaletteItem array BinaryReader =
@@ -254,7 +254,7 @@ While I got the parser working in the end I felt I haven't found the right abstr
 
 I suppose the reason for the 64KiB pages in the file is because of the original demo streaming from disk. I think it uses two 64KiB buffers. One buffer is being rendered and the other is being populated from disk. When the demo reaches flip page command it renders the other buffer and the first buffer is populated from disk.
 
-But that polygon parse result modifies how the frame parser should behave complicated it for me.
+But that polygon parse result modifies how the frame parser should behave, which complicated it for me.
 
 The polygon parser looks like this:
 ```fsharp
@@ -286,7 +286,7 @@ Above doesn't look too bad but I felt the signature of the `brepeatPrefixed` is 
 
 I feel it is too clunky and not generic enough.
 
-The first parser `t` parses the prefix and return either a `Continue` value with a seed value given to the second parameter (for example how many vertices should be read for the following polygon). If we are done it returns a `Stop` value with a function that tranforms the accumulated value (a polygon array for example) in the the final parser value. This is to allow the prefix parser to send one of three variants to the frame parser, read Next frame, flip page and read Next frame or Stop.
+The first parser `t` parses the prefix and returns either a `Continue` value with a seed value given to the second parameter (for example how many vertices should be read for the following polygon). If we are done it returns a `Stop` value with a function that transforms the accumulated value (a polygon array for example) into the final parser value. This is to allow the prefix parser to send one of three variants to the frame parser, read Next frame, flip page and read Next frame or Stop.
 
 ```fsharp
   let bpolygonDescriptor () =
@@ -305,18 +305,18 @@ The first parser `t` parses the prefix and return either a `Continue` value with
     }
 ```
 
-If somone has some ideas how make it less clunky and/or increase the generality of the abstraction I would love to hear it.
+If someone has some ideas on how to make it less clunky and/or increase the generality of the abstraction I would love to hear it.
 
 ## Rendering ST-NICC in 2022
 
 To give the proper retro feeling I felt it to be a great idea to render the entire thing in the terminal.
 
-Printing to the terminal can be slow and colors not portable. Luckily there are portable and libraries like [Terminal.GUI](https://github.com/gui-cs/Terminal.Gui) and [Spectre.Console](https://github.com/spectreconsole/spectre.console).
+Printing to the terminal can be slow and colors are not portable. Luckily there are portable and libraries like [Terminal.GUI](https://github.com/gui-cs/Terminal.Gui) and [Spectre.Console](https://github.com/spectreconsole/spectre.console).
 
 ### Spectre.Console
-I went with [Spectre.Console](https://github.com/spectreconsole/spectre.console) as I used it before to render 2D particle constraints systems in the terminal before.
+I went with [Spectre.Console](https://github.com/spectreconsole/spectre.console) as I used it to render 2D particle constraints systems in the terminal before.
 
-Setting up a 2D canvas (a ridocolously entertaining idea) in the terminal is very easy with [Spectre.Console](https://github.com/spectreconsole/spectre.console).
+Setting up a 2D canvas (a ridiculously entertaining idea) in the terminal is very easy with [Spectre.Console](https://github.com/spectreconsole/spectre.console).
 
 ```fsharp
   // The dimensions of the Atari STE graphics area in ST-NICC
@@ -337,9 +337,9 @@ Setting up a 2D canvas (a ridocolously entertaining idea) in the terminal is ver
 
 ### Drawing polygons with ImageSharp
 
-As great as [Spectre.Console](https://github.com/spectreconsole/spectre.console) is [Spectre.Console](https://github.com/spectreconsole/spectre.console) doesn't support drawing polygons and a polygon filler function is a pain to implement. I know, I tried and failed implementing one for the old Atari STE.
+As great as [Spectre.Console](https://github.com/spectreconsole/spectre.console) is [Spectre.Console](https://github.com/spectreconsole/spectre.console) doesn't support drawing polygons and a polygon filler function is a pain to implement. I know, I tried and failed to implement one for the old Atari STE.
 
-Instead, I lifted in [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp). As my work here is licensed under Apache License V2 I can chose that option when chosing license uder [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp) split license.
+Instead, I lifted in [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp). As my work here is licensed under Apache License V2 I can choose that option when picking license under [SixLabors.ImageSharp](https://github.com/SixLabors/ImageSharp) split license.
 
 This makes the updater function for the terminal straight forward:
 
@@ -371,7 +371,7 @@ This makes the updater function for the terminal straight forward:
       ctx.Refresh()
 ```
 
-The frames however are not the same model as produced by the scene parser. Instead of preprocessing step converts it a specialized model to fit rendering with Spectre + ImageSharp.
+The frames however are not the same model as produced by the scene parser. Instead, the preprocessing step converts it into a specialized model to fit rendering with Spectre + ImageSharp.
 
 ```fsharp
 
@@ -433,7 +433,7 @@ let toSpectreScene (scene : Scene) : SpectreScene =
   { Frames = frames }
 ```
 
-With that we are done and can observe the sillyness by running the program in a terminal
+With that we are done and can observe the silliness by running the program in a terminal
 
 ```bash
 dotnet run -c Release
@@ -488,7 +488,7 @@ type SceneElement (scene : WPFScene) =
 ```
 ## Appendix 1 - Debugging and testing the parser
 
-Even if I think the binary parser combinators helps writing a correct parser it is still bit fiddling and very easy to screw up.
+Even if I think the binary parser combinators help writing a correct parser it is still bit-fiddling and very easy to screw up.
 
 So early on in the process I built functions to write the parsed model into an intended text stream.
 
@@ -496,24 +496,24 @@ This text stream is committed to git: `assets/scene1.txt`
 
 This helped me alot during the initial parsing so that I could have an easy text format to see if the parsed values I produced made sense.
 
-But it still provides value for me when I do refactorings to the code for example optimizations or extending it with functionality to split complex polygons into simple ones.
+But it still provides value for me when I do refactorings to the code, for example optimizations or extending it with functionality to split complex polygons into simple ones.
 
 After the refactoring I regenerate the text file and make sure that the model changes only contain the expected changes.
 
-A neat little trick I think for when one are implementing parsers where you like to check the parser model in its entirity after refactoring yet want to make easy to establish a new baseline after determing the refactoring produced the right changes to the model (commit the updated text file).
+A neat little trick I think for when one are implementing parsers where you like to check the parser model in its entirety after refactoring yet want to make easy to establish a new baseline after determining the refactoring produced the right changes to the model (commit the updated text file).
 
 I wrote a little indented streamer writer combinator library.  I found the library surprisingly slow but at least it produces the right result :).
 
 I suppose I should debug it in depth to find the bottleneck someday.
 
 ## Appendix 2 - My contribution to STNICC 2000
-As mentioned I did a small contribution to STNICC by providing the PRO tracker player.
+As mentioned I made a small contribution to STNICC by providing the PRO tracker player.
 
-If anyone is interested in a arcane Atari topic I wrote up a blog explaining the history for the [PRO tracker player](https://github.com/mrange/pt_src3).
+If anyone is interested in arcane Atari topic I wrote up a blog explaining the history for the [PRO tracker player](https://github.com/mrange/pt_src3).
 
 ## Appendix 3 - Portable fast bit population count.
 
-An interesting problem is how to count the number of bits a word effectively. For this parser performance it's not a problem but a fast bit counter is so wonderfully opaque and obscure I just had to include it.
+An interesting problem is how to count the number of bits in a word effectively. For this parser performance it's not a problem but a fast bit counter is so wonderfully opaque and obscure I just had to include it.
 
 Trivially one writes a loop that checks if the lowest bit is set, increments a counter if set and then shifts the word right 1 step.
 
@@ -536,10 +536,10 @@ If we know a program always executes on x86 we could use the [x86 intrinsics](ht
 
 To support modern hardware we should triangulate the polygons.
 
-Triangulating simple polygons (no interesections) are reasonble easy thanks to the two ears theorem. The problem is the ST-NICC triangles are not all of them simple.
+Triangulating simple polygons (no intersections) are reasonable easy thanks to the two ears theorem. The problem is the ST-NICC triangles are not all of them simple.
 
-So I spent a lot of time identifying if a polygon is not simple (if lines are interesecting) and then split them.
+So I spent a lot of time identifying if a polygon is not simple (if lines are intersecting) and then split them.
 
-In the end I ran out of energy before the deadline for the blog post an abandon the work before I finished the triangulation algorithm.
+In the end I ran out of energy before the deadline for the blog post and abandoned the work before I finished the triangulation algorithm.
 
 You find traces of the effort from this in the scene parser to detect convexity, simples and splitting complex polygons into simple ones.
