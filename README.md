@@ -572,3 +572,10 @@ So I spent a lot of time identifying if a polygon is not simple (if lines are in
 In the end I ran out of energy before the deadline for the blog post and abandoned the work before I finished the triangulation algorithm.
 
 You find traces of the effort from this in the scene parser to detect convexity, simples and splitting complex polygons into simple ones.
+
+## Appendix 5 - What is a 'nibble'?
+
+I was asked by my buddy [Thindal](https://www.twitch.tv/thindal): What is a nibble? He figured it out by himself but it's not common knowledge.
+
+A nibble is a 4-bit number that can hold values 0-15. The nibble was the word sized used in the 1971 legendary CPU [Intel 4004](https://en.wikipedia.org/wiki/Intel_4004). Later CPUs introduced byte (8-bit) as the word size and while modern CPUs uses much bigger word size we still talk about bytes while nibbles are largely forgotten.
+
