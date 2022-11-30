@@ -65,7 +65,17 @@ See the [FORMAT.md](FORMAT.md) for all the details but:
 
 ### First frame annotated
 
-![First frame annotated](assets/format.png).
+In the hope to give a better understanding I have annoted part of the first frame in the binary format.
+
+![First frame annotated](assets/format.png)
+
+1. The first byte (blue) is the frame flag containing 3 flags. In this case all 3 flags are true so we should clear the screen, load a palette delta and use the indexed polygon mode.
+2. Next are 2 bytes (green) that is a bit mask indicating what palette entries should be updated. In this case 8 bits are set out of 16 meaning we should read the next 8*16 bits(2 bytes) as colors.
+3. Palette colors 8*16 bits(2 bytes). More detail below on how to convert Atari STE colors to RGB colors.
+4. At the start of the polygon data in indexed mode is a byte (red) telling us how many vertices are following. In this case 0xD8(216) vertices
+5. Vertex data (yellow). Each vertex are a 2 byte value where the first byte is the coordinate and the second y coordinate.
+6. Polygon prefix (green). This has 3 special values that tells us if we are done, or should go to next frame or next page and frame. Since this is not one of the special values we split 0x74 into two nibbles 7 and 4. 7 is the color palette entry to use and 4 are how many vertices are in this polygon.
+7. Vertex index (cyan). 4 bytes that references vertex 0x23, 0, 1 and 2 in the vertex data above. The polygon should be closed.
 
 This can in F# be represented like this:
 
