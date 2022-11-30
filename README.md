@@ -77,6 +77,8 @@ In the hope to give a better understanding I have annoted part of the first fram
 6. Polygon prefix (green). This has 3 special values that tells us if we are done, or should go to next frame or next page and frame. Since this is not one of the special values we split 0x74 into two nibbles 7 and 4. 7 is the color palette entry to use and 4 are how many vertices are in this polygon.
 7. Vertex index (cyan). 4 bytes that references vertex 0x23, 0, 1 and 2 in the vertex data above. The polygon should be closed.
 
+### F# file model
+
 This can in F# be represented like this:
 
 ```fsharp
