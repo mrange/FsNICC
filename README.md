@@ -1,4 +1,6 @@
-# Recreating ST-NICC 2000 1st place demo in F#
+# F# Advent 2022-12-01: Recreating ST-NICC 2000 1st place demo in F#
+An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-advent-calendar-in-english-2022/) blog post. Big thanks to [Sergey Tihon](https://twitter.com/sergey_tihon) from his tireless running on F# weekly and F# advent event.
+
 
 ## TLDR; parses a polygon file format for an Atari STE demo released in 2000
 
