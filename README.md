@@ -63,6 +63,10 @@ See the [FORMAT.md](FORMAT.md) for all the details but:
 4. If non-indexed polygons has palette index and vertices
 5. If indexed polygons starts with all vertices then palette index and indexes to the vertices
 
+### First frame annotated
+
+![First frame annotated](assets/format.png).
+
 This can in F# be represented like this:
 
 ```fsharp
