@@ -8,7 +8,7 @@ An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-adv
 
 ### Build and run
 
-[F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
+![Instagram logo](assets/small.png)[F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
 
 ```bash
 # In a terminal window
