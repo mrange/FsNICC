@@ -5,17 +5,16 @@ An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-adv
 ## TLDR; parses a polygon file format for an Atari STE demo released in 2000
 
 ![F#-NICC screenshot #1](assets/fs-nicc.jpg)
-[F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
 
 ### Build and run
+
+[F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
 
 ```bash
 # In a terminal window
 cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
-
-[Instagram capture of the demo running in Windows Terminal](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
 
 ![ST-NICC screenshot #1](assets/st-nicc-0.gif)
 ![ST-NICC screenshot #2](assets/st-nicc-1.gif)
