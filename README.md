@@ -14,6 +14,9 @@ An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-adv
 cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
+
+[Instagram capture of the demo running in Windows Terminal](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
+
 ![ST-NICC screenshot #1](assets/st-nicc-0.gif)
 ![ST-NICC screenshot #2](assets/st-nicc-1.gif)
 
