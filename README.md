@@ -1,4 +1,4 @@
-# F# Advent 2022-12-01: Recreating ST-NICC 2000 1st place demo in F#
+# F# Advent 2022-12-01: Recreating STNICC 2000 1st place demo in F#
 An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-advent-calendar-in-english-2022/) blog post. Big thanks to [Sergey Tihon](https://twitter.com/sergey_tihon) from his tireless running on F# weekly and F# advent event.
 
 
@@ -16,13 +16,13 @@ cd source/FsNICC.Spectre
 dotnet run -c Release
 ```
 
-![ST-NICC screenshot #1](assets/st-nicc-0.gif)
-![ST-NICC screenshot #2](assets/st-nicc-1.gif)
+![STNICC screenshot #1](assets/st-nicc-0.gif)
+![STNICC screenshot #2](assets/st-nicc-1.gif)
 
-ST-NICC aka "ST News International Christmas Coding Convention" had a demo competition in 2000, the [winner](https://www.youtube.com/watch?v=nqVJWFNpTqA) was [Oxygene](https://demozoo.org/groups/2118/) with an amazing 3D screen for Atari STE.
+STNICC aka "ST News International Christmas Coding Convention" had a demo competition in 2000, the [winner](https://www.youtube.com/watch?v=nqVJWFNpTqA) was [Oxygene](https://demozoo.org/groups/2118/) with an amazing 3D screen for Atari STE.
 
-![ST-NICC screenshot #3](assets/st-nicc-2.gif)
-![ST-NICC screenshot #4](assets/st-nicc-3.gif)
+![STNICC screenshot #3](assets/st-nicc-2.gif)
+![STNICC screenshot #4](assets/st-nicc-3.gif)
 
 I did play a small part in providing the PRO tracker player.
 
@@ -41,7 +41,7 @@ There are some amazing ones for:
 
 I sometimes write for [F# advent](https://sergeytihon.com/2022/10/28/f-advent-calendar-in-english-2022/), usually about things that have no use to anyone but perhaps interesting to a few people out there.
 
-I was thinking, could I recreate the ST-NICC winner in F# for F# advent?
+I was thinking, could I recreate the STNICC winner in F# for F# advent?
 
 From the competition invite to port the demo there was a format description as well as the original data file.
 
@@ -53,7 +53,7 @@ Because CPUs were a bit more limited on the old Atari STE than today [Leonard](h
 
 So [Leonard](https://demozoo.org/sceners/2527/) streamed the data from disk into memory on-demand while the demo was running.
 
-In order to recreate the ST-NICC winner we need to parse the binary format
+In order to recreate the STNICC winner we need to parse the binary format
 
 ### The format
 
@@ -143,7 +143,7 @@ type [<Struct>] Scene =
   }
 ```
 
-Once parsed we "just" render frame by frame to recreate the ST-NICC winner.
+Once parsed we "just" render frame by frame to recreate the STNICC winner.
 
 ### The parser
 
@@ -346,7 +346,7 @@ The first parser `t` parses the prefix and returns either a `Continue` value wit
 
 If someone has some ideas on how to make it less clunky and/or increase the generality of the abstraction I would love to hear it.
 
-## Rendering ST-NICC in 2022
+## Rendering STNICC in 2022
 
 To give the proper retro feeling I felt it to be a great idea to render the entire thing in the terminal.
 
@@ -358,7 +358,7 @@ I went with [Spectre.Console](https://github.com/spectreconsole/spectre.console)
 Setting up a 2D canvas (a ridiculously entertaining idea) in the terminal is very easy with [Spectre.Console](https://github.com/spectreconsole/spectre.console).
 
 ```fsharp
-  // The dimensions of the Atari STE graphics area in ST-NICC
+  // The dimensions of the Atari STE graphics area in STNICC
   let w = 256
   let h = 200
 
@@ -586,7 +586,7 @@ If we know a program always executes on x86 we could use the [x86 intrinsics](ht
 
 To support modern hardware we should triangulate the polygons.
 
-Triangulating simple polygons (no intersections) are reasonable easy thanks to the two ears theorem. The problem is the ST-NICC triangles are not all of them simple.
+Triangulating simple polygons (no intersections) are reasonable easy thanks to the two ears theorem. The problem is the STNICC triangles are not all of them simple.
 
 So I spent a lot of time identifying if a polygon is not simple (if lines are intersecting) and then split them.
 
