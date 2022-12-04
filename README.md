@@ -8,7 +8,7 @@ An [F# Advent Calendar in English 2022](https://sergeytihon.com/2022/10/28/f-adv
 
 ### Build and run
 
-![Instagram logo](assets/small.png)[F#-NICC recording, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/)
+![Instagram logo](assets/small.png)[F#-NICC instagram, turn on the sound](https://www.instagram.com/p/Cj1Fb2ZAwcK/) [also available on YouTube](https://www.youtube.com/watch?v=_KdtCkrmce4)
 
 ```bash
 # In a terminal window
@@ -32,6 +32,8 @@ There are some amazing ones for:
 
 * [Amiga](https://www.youtube.com/watch?v=7sYhIxiizKY)
 * [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY)
+* [Atari Jaguar](https://www.youtube.com/watch?v=_arWStGbmOA)
+* [Atari Lynx](https://www.youtube.com/watch?v=PHSYXLpr3Rg)
 * [SNES](https://www.youtube.com/watch?v=dOqxLBZiBRA)([No SuperFX](https://www.youtube.com/watch?v=BQE1rr1Xqf0))
 * [SEGA Mega Drive](https://www.youtube.com/watch?v=LcT1XIrklhQ)
 * [Atari 800XL](https://www.youtube.com/watch?v=rVa0ZEdwqoY)
