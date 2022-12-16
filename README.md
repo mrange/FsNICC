@@ -36,6 +36,8 @@ There are some amazing ones for:
 * [Atari Lynx](https://www.youtube.com/watch?v=PHSYXLpr3Rg)
 * [SNES](https://www.youtube.com/watch?v=dOqxLBZiBRA)([No SuperFX](https://www.youtube.com/watch?v=BQE1rr1Xqf0))
 * [SEGA Mega Drive](https://www.youtube.com/watch?v=LcT1XIrklhQ)
+* [Gameboy Advanced](https://www.youtube.com/watch?v=HtuQa4g90p4)
+* [Gameboy Color](https://www.youtube.com/watch?v=3mPpFrVChFg)
 * [Atari 800XL](https://www.youtube.com/watch?v=rVa0ZEdwqoY)
 * [NES](https://www.youtube.com/watch?v=l8heNWVXfsw)
 * [BBC Micro](https://www.youtube.com/watch?v=_mVI9d2Acyw)([source](https://github.com/kieranhj/stnicc-beeb/tree/master/data))
