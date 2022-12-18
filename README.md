@@ -34,6 +34,7 @@ There are some amazing ones for:
 * [Atari STF](https://www.youtube.com/watch?v=8VOCbmMMteY)
 * [Atari Jaguar](https://www.youtube.com/watch?v=_arWStGbmOA)
 * [Atari Lynx](https://www.youtube.com/watch?v=PHSYXLpr3Rg)
+* [386SX-DOS](https://www.youtube.com/watch?v=3LvQwSR_ekI)
 * [SNES](https://www.youtube.com/watch?v=dOqxLBZiBRA)([No SuperFX](https://www.youtube.com/watch?v=BQE1rr1Xqf0))
 * [SEGA Mega Drive](https://www.youtube.com/watch?v=LcT1XIrklhQ)
 * [Gameboy Advanced](https://www.youtube.com/watch?v=HtuQa4g90p4)
